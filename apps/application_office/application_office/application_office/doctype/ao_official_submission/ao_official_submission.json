@@ -1,0 +1,168 @@
+{
+ "doctype": "DocType",
+ "name": "AO Official Submission",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "AO Application Case",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "submitted_by",
+   "fieldtype": "Link",
+   "label": "Submitted By",
+   "options": "User",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "human_submission_attestation",
+   "fieldtype": "Check",
+   "label": "Human Submission Attestation",
+   "reqd": 1,
+   "description": "I personally submitted this application through the official website. It was not submitted by a bot or script, and no CAPTCHA or access restriction was bypassed."
+  },
+  {
+   "fieldname": "official_portal",
+   "fieldtype": "Data",
+   "label": "Official Portal",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Name / URL of the official website used"
+  },
+  {
+   "fieldname": "submission_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Submission Timestamp",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "official_confirmation_number",
+   "fieldtype": "Data",
+   "label": "Official Confirmation Number",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "submission_status",
+   "fieldtype": "Select",
+   "label": "Submission Status",
+   "options": "Submitted\nConfirmation Received\nFollow-up Needed\nOfficial Update Received",
+   "default": "Submitted",
+   "reqd": 1
+  },
+  {
+   "fieldname": "follow_up_date",
+   "fieldtype": "Date",
+   "label": "Follow Up Date"
+  },
+  {
+   "fieldname": "evidence_file",
+   "fieldtype": "Attach",
+   "label": "Evidence File",
+   "description": "Receipt / screenshot (stored as a private file)"
+  },
+  {
+   "fieldname": "customer_can_download_evidence",
+   "fieldtype": "Check",
+   "label": "Customer Can Download Evidence",
+   "description": "Allow the customer to download this receipt from the portal"
+  },
+  {
+   "fieldname": "official_correspondence",
+   "fieldtype": "Long Text",
+   "label": "Official Correspondence",
+   "description": "Staff summary of official correspondence. Do not paste passport numbers."
+  },
+  {
+   "fieldname": "customer_visible_update",
+   "fieldtype": "Small Text",
+   "label": "Customer Visible Update",
+   "description": "Shown to the customer when staff enter an official status update"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "AO Administrator",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Finance",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "autoname": "format:OS-{######}",
+ "naming_rule": "Expression"
+}

@@ -1,0 +1,4 @@
+[
+  {"url": "https://github.com/frappe/erpnext", "branch": "v16.51.1"},
+  {"url": "https://YOUR-GIT-HOST/YOUR-ORG/application_office", "branch": "main"}
+]

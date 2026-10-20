@@ -1,0 +1,81 @@
+# Office-specific layer. Use TOGETHER with the pinned upstream frappe_docker files - see `make up`:
+#   docker compose -f upstream/frappe_docker/compose.yaml \
+#                  -f upstream/frappe_docker/overrides/compose.mariadb.yaml \
+#                  -f upstream/frappe_docker/overrides/compose.redis.yaml \
+#                  -f upstream/frappe_docker/overrides/compose.https.yaml -f compose.yaml ...
+# STATUS: statically validated only (YAML + structure). It has NOT been run: the build sandbox has no Docker.
+services:
+  backend:
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -H 'Host: ${SITE_NAME}' http://localhost:8000/api/method/ping || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    deploy: {resources: {limits: {cpus: "2.0", memory: 2g}}}
+
+  # One-shot site creation. Idempotent: skips when the site already exists.
+  create-site:
+    image: ${CUSTOM_IMAGE}:${CUSTOM_TAG}
+    pull_policy: ${PULL_POLICY:-missing}
+    platform: linux/amd64
+    restart: "no"
+    volumes: [sites:/home/frappe/frappe-bench/sites]
+    depends_on:
+      configurator: {condition: service_completed_successfully}
+      db: {condition: service_healthy}
+    entrypoint: [bash, -c]
+    command:
+      - |
+        set -e
+        if [ -d sites/$$SITE_NAME ]; then echo "site exists"; exit 0; fi
+        bench new-site $$SITE_NAME --mariadb-user-host-login-scope='%' --db-root-password "$$DB_PASSWORD" \
+          --admin-password "$$ADMIN_PASSWORD" --install-app erpnext --install-app application_office
+        bench --site $$SITE_NAME set-config throttle_user_limit 60 --parse
+    environment:
+      SITE_NAME: ${SITE_NAME:?}
+      DB_PASSWORD: ${DB_PASSWORD:?}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?}
+
+  docuseal-db:
+    image: ${POSTGRES_IMAGE:-postgres:17}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: docuseal
+      POSTGRES_DB: docuseal
+      POSTGRES_PASSWORD: ${DOCUSEAL_DB_PASSWORD:?}
+    volumes: [docuseal-db:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docuseal -d docuseal"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    deploy: {resources: {limits: {cpus: "1.0", memory: 512m}}}
+    # no `ports:` - the database is reachable only on the internal compose network
+
+  docuseal:
+    image: ${DOCUSEAL_IMAGE:-docuseal/docuseal}:${DOCUSEAL_TAG:?pin a DocuSeal version}
+    restart: unless-stopped
+    depends_on:
+      docuseal-db: {condition: service_healthy}
+    environment:
+      DATABASE_URL: postgresql://docuseal:${DOCUSEAL_DB_PASSWORD}@docuseal-db:5432/docuseal
+      SECRET_KEY_BASE: ${DOCUSEAL_SECRET_KEY_BASE:?}
+      HOST: ${DOCUSEAL_HOST:?}
+      FORCE_SSL: ${DOCUSEAL_HOST}
+    volumes: [docuseal-data:/data/docuseal]
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.docuseal.loadbalancer.server.port=3000
+      - traefik.http.routers.docuseal.entrypoints=websecure
+      - traefik.http.routers.docuseal.tls.certresolver=main-resolver
+      - traefik.http.routers.docuseal.rule=Host(`${DOCUSEAL_HOST}`)
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    deploy: {resources: {limits: {cpus: "1.5", memory: 1g}}}
+
+volumes:
+  docuseal-db:
+  docuseal-data:

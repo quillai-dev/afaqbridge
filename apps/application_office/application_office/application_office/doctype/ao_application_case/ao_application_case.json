@@ -1,0 +1,339 @@
+{
+ "doctype": "DocType",
+ "name": "AO Application Case",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1,
+   "fetch_from": "customer.customer_name",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "program",
+   "fieldtype": "Link",
+   "label": "Program",
+   "options": "AO Program",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Data",
+   "label": "Service Type",
+   "read_only": 1,
+   "fetch_from": "program.program_category"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": "C1"
+  },
+  {
+   "fieldname": "case_state",
+   "fieldtype": "Select",
+   "label": "Workflow State",
+   "options": "NEW\nWAITING_FOR_DOCUMENTS\nUNDER_REVIEW\nCORRECTION_REQUIRED\nREADY_FOR_CUSTOMER_APPROVAL\nREADY_FOR_SUBMISSION\nSUBMITTED\nAWAITING_OFFICIAL_UPDATE\nCOMPLETED\nON_HOLD\nCANCELLED\nREJECTED_BY_OFFICIAL_AUTHORITY\nCLOSED",
+   "default": "NEW",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "description": "Changed only through the workflow engine (Actions menu)."
+  },
+  {
+   "fieldname": "assigned_employee",
+   "fieldtype": "Link",
+   "label": "Assigned Employee",
+   "options": "User",
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nNormal\nHigh\nUrgent",
+   "default": "Normal",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "s_dates",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "opening_date",
+   "fieldtype": "Date",
+   "label": "Opening Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "applicable_deadline",
+   "fieldtype": "Datetime",
+   "label": "Applicable Deadline",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Interpreted in the program's time zone. Staff-verified; copied from the program at creation and editable."
+  },
+  {
+   "fieldname": "deadline_time_zone",
+   "fieldtype": "Data",
+   "label": "Deadline Time Zone",
+   "read_only": 1,
+   "fetch_from": "program.time_zone"
+  },
+  {
+   "fieldname": "closure_date",
+   "fieldtype": "Date",
+   "label": "Closure Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text Editor",
+   "label": "Internal Notes",
+   "description": "Staff only. Never shown to the customer or included in notifications."
+  },
+  {
+   "fieldname": "customer_visible_notes",
+   "fieldtype": "Text Editor",
+   "label": "Customer Visible Notes",
+   "description": "Visible to the customer in the portal."
+  },
+  {
+   "fieldname": "s_approval",
+   "fieldtype": "Section Break",
+   "label": "Customer Approval"
+  },
+  {
+   "fieldname": "customer_approval_required",
+   "fieldtype": "Check",
+   "label": "Customer Approval Required",
+   "default": 1
+  },
+  {
+   "fieldname": "final_customer_approval_status",
+   "fieldtype": "Select",
+   "label": "Final Customer Approval Status",
+   "options": "Not Requested\nRequested\nApproved\nChanges Requested",
+   "default": "Not Requested",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by_user",
+   "fieldtype": "Link",
+   "label": "Approved By User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_data_hash",
+   "fieldtype": "Data",
+   "label": "Approved Data Hash",
+   "read_only": 1,
+   "description": "SHA-256 of the intake data + document versions the customer approved"
+  },
+  {
+   "fieldname": "s_official",
+   "fieldtype": "Section Break",
+   "label": "Official Submission (recorded by a human employee)"
+  },
+  {
+   "fieldname": "official_submission_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Official Submission Timestamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "official_confirmation_reference",
+   "fieldtype": "Data",
+   "label": "Official Confirmation Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_intake",
+   "fieldtype": "Section Break",
+   "label": "Intake Data"
+  },
+  {
+   "fieldname": "intake_completed",
+   "fieldtype": "Check",
+   "label": "Intake Completed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "intake_data",
+   "fieldtype": "Long Text",
+   "label": "Intake Data",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "s_retention",
+   "fieldtype": "Section Break",
+   "label": "Retention"
+  },
+  {
+   "fieldname": "retention_until",
+   "fieldtype": "Date",
+   "label": "Retention Until",
+   "read_only": 1
+  },
+  {
+   "fieldname": "legal_hold",
+   "fieldtype": "Check",
+   "label": "Legal Hold",
+   "description": "Blocks automatic deletion eligibility"
+  },
+  {
+   "fieldname": "deletion_status",
+   "fieldtype": "Select",
+   "label": "Deletion Status",
+   "options": "\nEligible\nDeleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_log",
+   "fieldtype": "Section Break",
+   "label": "State History"
+  },
+  {
+   "fieldname": "state_log",
+   "fieldtype": "Table",
+   "label": "State Log",
+   "options": "AO Case State Log",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "AO Administrator",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Finance",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Administrator",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "autoname": "format:AC-{YYYY}-{#####}",
+ "naming_rule": "Expression",
+ "title_field": "customer_name",
+ "search_fields": "customer_name,program,case_state"
+}

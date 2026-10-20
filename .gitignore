@@ -1,0 +1,10 @@
+.env
+*.tar.enc
+*.sql.enc
+backups/
+upstream/
+__pycache__/
+*.pyc
+node_modules/
+*.log
+.DS_Store
