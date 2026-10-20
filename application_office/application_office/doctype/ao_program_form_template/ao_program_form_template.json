@@ -1,0 +1,36 @@
+{
+ "doctype": "DocType",
+ "name": "AO Program Form Template",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "form_name",
+   "fieldtype": "Data",
+   "label": "Form Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "docuseal_template_id",
+   "fieldtype": "Data",
+   "label": "Docuseal Template Id",
+   "in_list_view": 1,
+   "description": "Leave empty to use in-portal click approval"
+  },
+  {
+   "fieldname": "signature_required",
+   "fieldtype": "Check",
+   "label": "Signature Required",
+   "in_list_view": 1,
+   "description": "If set the customer must complete the DocuSeal signing. Whether an e-signature is legally sufficient is determined by the office per document and jurisdiction."
+  }
+ ],
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "istable": 1
+}

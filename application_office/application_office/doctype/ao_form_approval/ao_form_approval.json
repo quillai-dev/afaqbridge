@@ -1,0 +1,177 @@
+{
+ "doctype": "DocType",
+ "name": "AO Form Approval",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "AO Application Case",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1,
+   "fetch_from": "case.customer"
+  },
+  {
+   "fieldname": "form_template",
+   "fieldtype": "Data",
+   "label": "Form Template",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approval_mode",
+   "fieldtype": "Select",
+   "label": "Approval Mode",
+   "options": "In-Portal Approval\nDocuSeal Signature",
+   "default": "In-Portal Approval",
+   "reqd": 1
+  },
+  {
+   "fieldname": "submission_status",
+   "fieldtype": "Select",
+   "label": "Submission Status",
+   "options": "Pending\nSent\nViewed\nCompleted\nDeclined\nExpired\nError",
+   "default": "Pending",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_approval",
+   "fieldtype": "Check",
+   "label": "Customer Approval",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approval_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Approval Timestamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "signature_status",
+   "fieldtype": "Select",
+   "label": "Signature Status",
+   "options": "Not Applicable\nPending\nSigned\nDeclined",
+   "default": "Not Applicable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_ds",
+   "fieldtype": "Section Break",
+   "label": "DocuSeal"
+  },
+  {
+   "fieldname": "docuseal_template_id",
+   "fieldtype": "Data",
+   "label": "Docuseal Template Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "docuseal_submission_id",
+   "fieldtype": "Data",
+   "label": "Docuseal Submission Id",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "docuseal_submitter_id",
+   "fieldtype": "Data",
+   "label": "Docuseal Submitter Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "docuseal_signing_url",
+   "fieldtype": "Data",
+   "label": "Docuseal Signing Url",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "signed_document_file",
+   "fieldtype": "Data",
+   "label": "Signed Document File",
+   "read_only": 1,
+   "description": "Private File containing the signed PDF"
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "AO Administrator",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "autoname": "format:FA-{######}",
+ "naming_rule": "Expression"
+}

@@ -1,0 +1,208 @@
+{
+ "doctype": "DocType",
+ "name": "AO Referral",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "AO Application Case",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "referral_status",
+   "fieldtype": "Select",
+   "label": "Referral Status",
+   "options": "Proposed\nContacted\nAccepted by Professional\nDeclined\nClosed",
+   "default": "Proposed",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": "C1"
+  },
+  {
+   "fieldname": "professional_or_organization",
+   "fieldtype": "Data",
+   "label": "Professional Or Organization",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "jurisdiction",
+   "fieldtype": "Data",
+   "label": "Jurisdiction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_notified",
+   "fieldtype": "Check",
+   "label": "Customer Notified",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_lic",
+   "fieldtype": "Section Break",
+   "label": "Licence / Registration (verified by authorised staff only)"
+  },
+  {
+   "fieldname": "licence_details",
+   "fieldtype": "Small Text",
+   "label": "Licence Details",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "licence_verified",
+   "fieldtype": "Check",
+   "label": "Licence Verified",
+   "permlevel": 1,
+   "description": "Tick only after you personally verified the licence with the regulator. A referral is NOT proof of licensure."
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "verification_date",
+   "fieldtype": "Date",
+   "label": "Verification Date",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "verification_source",
+   "fieldtype": "Data",
+   "label": "Verification Source",
+   "permlevel": 1,
+   "description": "Regulator register / URL consulted"
+  },
+  {
+   "fieldname": "s_comm",
+   "fieldtype": "Section Break",
+   "label": "Communication History"
+  },
+  {
+   "fieldname": "communications",
+   "fieldtype": "Table",
+   "label": "Communications",
+   "options": "AO Referral Communication"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "AO Administrator",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Administrator",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 1,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 1,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "autoname": "format:RF-{######}",
+ "naming_rule": "Expression"
+}

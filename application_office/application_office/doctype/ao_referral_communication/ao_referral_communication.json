@@ -1,0 +1,36 @@
+{
+ "doctype": "DocType",
+ "name": "AO Referral Communication",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "communicated_on",
+   "fieldtype": "Datetime",
+   "label": "Communicated On",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "direction",
+   "fieldtype": "Select",
+   "label": "Direction",
+   "options": "To Professional\nFrom Professional\nTo Customer",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "label": "Summary",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "istable": 1
+}

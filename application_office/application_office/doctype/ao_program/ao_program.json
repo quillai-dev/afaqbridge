@@ -1,0 +1,236 @@
+{
+ "doctype": "DocType",
+ "name": "AO Program",
+ "module": "Application Office",
+ "custom": 0,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "program_name",
+   "fieldtype": "Data",
+   "label": "Program Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "program_category",
+   "fieldtype": "Select",
+   "label": "Program Category",
+   "options": "Diversity Visa Lottery\nScholarship\nEducational / Exchange Program\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sponsoring_organization",
+   "fieldtype": "Data",
+   "label": "Sponsoring Organization"
+  },
+  {
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Customers can only start cases for published programs"
+  },
+  {
+   "fieldname": "service_available",
+   "fieldtype": "Check",
+   "label": "Service Available",
+   "default": 1,
+   "in_list_view": 1,
+   "description": "Master switch: the office is currently taking clients for this service"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": "C1"
+  },
+  {
+   "fieldname": "responsible_employee",
+   "fieldtype": "Link",
+   "label": "Responsible Employee",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_verified_on",
+   "fieldtype": "Date",
+   "label": "Last Verified On",
+   "reqd": 1,
+   "description": "Date staff last verified this program's official information. Never inferred automatically."
+  },
+  {
+   "fieldname": "verification_stale_after_days",
+   "fieldtype": "Int",
+   "label": "Verification Stale After Days",
+   "default": 30
+  },
+  {
+   "fieldname": "s_official",
+   "fieldtype": "Section Break",
+   "label": "Official Information (verified by staff)"
+  },
+  {
+   "fieldname": "official_application_url",
+   "fieldtype": "Data",
+   "label": "Official Application Url",
+   "options": "URL"
+  },
+  {
+   "fieldname": "official_requirements_url",
+   "fieldtype": "Data",
+   "label": "Official Requirements Url",
+   "options": "URL"
+  },
+  {
+   "fieldname": "opening_datetime",
+   "fieldtype": "Datetime",
+   "label": "Opening Datetime"
+  },
+  {
+   "fieldname": "closing_datetime",
+   "fieldtype": "Datetime",
+   "label": "Closing Datetime"
+  },
+  {
+   "fieldname": "time_zone",
+   "fieldtype": "Data",
+   "label": "Time Zone",
+   "reqd": 1,
+   "default": "UTC",
+   "description": "IANA name, e.g. Europe/Berlin. Dates above are in this zone."
+  },
+  {
+   "fieldname": "fee_amount",
+   "fieldtype": "Currency",
+   "label": "Fee Amount"
+  },
+  {
+   "fieldname": "fee_note",
+   "fieldtype": "Small Text",
+   "label": "Fee Note"
+  },
+  {
+   "fieldname": "customer_approval_required",
+   "fieldtype": "Check",
+   "label": "Customer Approval Required",
+   "default": 1
+  },
+  {
+   "fieldname": "eligibility_information",
+   "fieldtype": "Text Editor",
+   "label": "Eligibility Information"
+  },
+  {
+   "fieldname": "s_req",
+   "fieldtype": "Section Break",
+   "label": "Required Documents"
+  },
+  {
+   "fieldname": "document_requirements",
+   "fieldtype": "Table",
+   "label": "Document Requirements",
+   "options": "AO Program Document Requirement"
+  },
+  {
+   "fieldname": "s_intake",
+   "fieldtype": "Section Break",
+   "label": "Intake Form"
+  },
+  {
+   "fieldname": "intake_fields",
+   "fieldtype": "Table",
+   "label": "Intake Fields",
+   "options": "AO Program Intake Field"
+  },
+  {
+   "fieldname": "s_forms",
+   "fieldtype": "Section Break",
+   "label": "Forms & Signatures"
+  },
+  {
+   "fieldname": "form_templates",
+   "fieldtype": "Table",
+   "label": "Form Templates",
+   "options": "AO Program Form Template"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "AO Administrator",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Case Worker",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Finance",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "AO Auditor",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "editable_grid": 1,
+ "row_format": "Dynamic",
+ "autoname": "field:program_name",
+ "naming_rule": "By fieldname",
+ "title_field": "program_name"
+}

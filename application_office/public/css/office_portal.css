@@ -1,0 +1,8 @@
+.ao-app{max-width:900px;margin:1.5rem auto;font-size:15px}
+.ao-app h2{margin:1.2rem 0 .6rem}.ao-card{border:1px solid #d1d8dd;border-radius:8px;padding:1rem;margin:.6rem 0;background:#fff}
+.ao-banner{background:#fff8e1;border:1px solid #f0d78c;border-radius:6px;padding:.7rem 1rem;font-size:13px;margin-bottom:1rem}
+.ao-badge{display:inline-block;padding:2px 8px;border-radius:10px;background:#eef;font-size:12px}
+.ao-warn{color:#b42318}.ao-ok{color:#067647}.ao-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:.3rem 0}
+.ao-app label{display:block;margin:.5rem 0 .15rem;font-weight:600}.ao-app input[type=text],.ao-app input[type=email],.ao-app select,.ao-app textarea{width:100%;padding:6px;border:1px solid #c0c6cc;border-radius:4px}
+.ao-app button{padding:6px 14px;border-radius:6px;border:1px solid #1f6feb;background:#1f6feb;color:#fff;cursor:pointer}.ao-app button.secondary{background:#fff;color:#1f6feb}
+.ao-msg{padding:.4rem .7rem;border-radius:6px;margin:.3rem 0;background:#f5f7fa}.ao-msg.customer{background:#e8f1ff}
