@@ -31,6 +31,8 @@ services:
         bench new-site $$SITE_NAME --mariadb-user-host-login-scope='%' --db-root-password "$$DB_PASSWORD" \
           --admin-password "$$ADMIN_PASSWORD" --install-app erpnext --install-app application_office
         bench --site $$SITE_NAME set-config throttle_user_limit 60 --parse
+        # links in e-mails (set-password etc.) are built from host_name; without it they point at the wrong origin
+        bench --site $$SITE_NAME set-config host_name https://$$SITE_NAME
     environment:
       SITE_NAME: ${SITE_NAME:?}
       DB_PASSWORD: ${DB_PASSWORD:?}

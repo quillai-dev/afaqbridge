@@ -23,6 +23,8 @@ First run: `create-site` runs `bench new-site … --install-app erpnext --instal
 3. Create staff users with AO roles; each staff member enrols 2FA at first login (enabled per role).
 4. Create your `AO Program` records and **publish** them (requires a verification date).
 
+**`host_name` must be the public HTTPS origin** (set by `create-site`; for an existing site run `bench --site <site> set-config host_name https://<site>`). Without it, set-password and notification links are built with the wrong origin (found during the browser E2E).
+
 Environment variables: see `.env.example` (every variable commented). Secrets never go in Git (`.gitignore` covers `.env`, backups, `upstream/`).
 Databases and Redis have no published ports; only the proxy listens on 80/443. Resource limits are set in `compose.yaml` for backend, DocuSeal and its DB - tune after measuring.
 

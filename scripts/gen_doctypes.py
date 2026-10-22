@@ -294,10 +294,10 @@ D.append(doctype("AO Required Document", [
 D.append(doctype("AO Document Review", [
     F("required_document", "Link", options="AO Required Document", reqd=True, in_list_view=True, set_only_once=True),
     F("case", "Link", options="AO Application Case", reqd=True, read_only=True, fetch_from="required_document.case"),
-    F("reviewer", "Link", options="User", reqd=True, read_only=True, in_list_view=True),
-    F("review_date", "Datetime", reqd=True, read_only=True),
+    F("reviewer", "Link", options="User", read_only=True, in_list_view=True),   # set server-side (not reqd: Desk would block saving)
+    F("review_date", "Datetime", read_only=True),
     F("decision", "Select", options="Approved\nCorrection Required", reqd=True, in_list_view=True),
-    F("version_reviewed", "Int", reqd=True, read_only=True),
+    F("version_reviewed", "Int", read_only=True),
     F("findings", "Small Text"),
     F("requested_corrections", "Small Text"),
     F("customer_feedback", "Small Text"),
@@ -328,7 +328,7 @@ D.append(doctype("AO Form Approval", [
 # ---------------------------------------------------------------- submission
 D.append(doctype("AO Official Submission", [
     F("case", "Link", options="AO Application Case", reqd=True, in_list_view=True, in_standard_filter=True, set_only_once=True),
-    F("submitted_by", "Link", options="User", reqd=True, read_only=True, in_list_view=True),
+    F("submitted_by", "Link", options="User", read_only=True, in_list_view=True),
     F("human_submission_attestation", "Check", reqd=True, description=
       "I personally submitted this application through the official website. It was not submitted by a bot or script, "
       "and no CAPTCHA or access restriction was bypassed."),

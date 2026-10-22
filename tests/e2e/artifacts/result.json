@@ -1,0 +1,100 @@
+{
+ "case": "AC-2026-00783",
+ "results": [
+  {
+   "name": "portal shows the disclaimer to guests",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "registration accepted with uniform message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "set-password link was delivered by e-mail",
+   "ok": true,
+   "detail": "http://office.localhost:8000/update-password?key=fd623e8e018"
+  },
+  {
+   "name": "customer is signed in right after setting the password",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "case created with unique reference",
+   "ok": true,
+   "detail": "AC-2026-00783"
+  },
+  {
+   "name": "fake PDF upload is rejected with an error message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "customer sees 'Under review' after sending",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "reviewer logs in to Desk through the 2FA prompt",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "customer sees correction request + reviewer feedback",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "after approving, the Approve button is gone and the portal explains the pending signature",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "approval alone does not advance while a signature is pending",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "customer is redirected to the (simulated) DocuSeal signing page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "signed webhook advanced the case to READY_FOR_SUBMISSION",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "final checklist shows all checks passed",
+   "ok": true,
+   "detail": "✅ Intake form completed | ✅ All required documents approved | ✅ Program information verified recently | ✅ Customer approval recorded | ✅ Approved data unchanged"
+  },
+  {
+   "name": "employee recorded the manual official submission",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "case state is SUBMITTED",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "workflow moved case to AWAITING_OFFICIAL_UPDATE",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "finance user sees NO workflow-transition menu on the case",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "E2E ABORTED: Protocol error (Runtime.callFunctionOn): Target closed",
+   "ok": false,
+   "detail": ""
+  }
+ ]
+}

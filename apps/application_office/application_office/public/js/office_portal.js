@@ -15,6 +15,10 @@
     kids.flat().forEach(k => e.append(k instanceof Node ? k : document.createTextNode(k == null ? "" : String(k))));
     return e;
   }
+  // Children may be Nodes, strings or (nested) arrays of either; flatten and drop empties before touching the DOM.
+  const kids = a => a.flat(Infinity).filter(x => x !== "" && x != null && x !== false);
+  const add = (...a) => root.append(...kids(a));
+  const reset = (...a) => root.replaceChildren(...kids(a));
   function serverMessage(r) {
     try { const m = JSON.parse(r._server_messages || "[]"); return m.map(x => JSON.parse(x).message).join(" ").replace(/<[^>]*>/g, ""); } catch (e) { return ""; }
   }
@@ -35,7 +39,7 @@
   async function start() {
     boot = await api("bootstrap");
     if (boot.user) csrfValue = await api("csrf_token");
-    root.replaceChildren(h("div", {class: "ao-banner"}, boot.disclaimer));
+    reset(h("div", {class: "ao-banner"}, boot.disclaimer));
     if (!boot.user) return guestView();
     if (!boot.user.consents_ok) return consentView();
     return dashboard();
@@ -45,7 +49,7 @@
     const f = {};
     const inp = (k, label, type) => h("div", {}, h("label", {for: "f-" + k}, label), f[k] = h("input", {id: "f-" + k, type: type || "text", autocomplete: "off"}));
     const chk = (k, text) => h("label", {}, f[k] = h("input", {type: "checkbox"}), " " + text);
-    root.append(h("h2", {}, "Sign in or register"),
+    add(h("h2", {}, "Sign in or register"),
       h("p", {}, h("a", {href: "/login?redirect-to=/office-portal"}, "Sign in to your account")),
       h("div", {class: "ao-card"}, h("h3", {}, "Create an account"), inp("name", "Full name"), inp("email", "E-mail", "email"),
         chk("terms", "I accept the service terms" + (boot.terms_url ? " (" + boot.terms_url + ")" : "")),
@@ -58,7 +62,7 @@
   }
 
   function consentView() {
-    root.append(h("h2", {}, "Please review and accept"), h("div", {class: "ao-card"},
+    add(h("h2", {}, "Please review and accept"), h("div", {class: "ao-card"},
       h("p", {}, "Service terms version " + boot.terms_version + ", privacy notice version " + boot.privacy_version + "."),
       h("p", {}, boot.sensitive_consent_text),
       h("button", {onclick: run(async () => { await api("accept_current_consents", {}, true); start(); })}, "I accept")));
@@ -66,7 +70,7 @@
 
   async function dashboard() {
     const [cases, services, invoices] = await Promise.all([api("list_cases"), api("list_services"), api("list_invoices")]);
-    root.append(h("h2", {}, "Hello, " + boot.user.name),
+    add(h("h2", {}, "Hello, " + boot.user.name),
       h("h3", {}, "Your applications"),
       cases.length ? cases.map(c => h("div", {class: "ao-card"}, h("div", {class: "ao-row"}, h("b", {}, c.program_name), h("span", {class: "ao-badge"}, c.status_label), c.deadline ? h("span", {}, "Deadline on record: " + c.deadline) : ""),
         h("button", {class: "secondary", onclick: () => caseView(c.name)}, "Open " + c.name))) : h("p", {}, "No applications yet."),
@@ -86,7 +90,7 @@
   async function caseView(name) {
     const c = await api("get_case", {case: name});
     const intakeInputs = {};
-    root.replaceChildren(h("div", {class: "ao-banner"}, c.disclaimer),
+    reset(h("div", {class: "ao-banner"}, c.disclaimer),
       h("button", {class: "secondary", onclick: start}, "← Back"),
       h("h2", {}, c.program_name + " — " + c.name), h("p", {}, h("span", {class: "ao-badge"}, c.status_label), c.deadline ? "  Deadline on record: " + c.deadline : ""),
       c.customer_visible_notes ? h("div", {class: "ao-card"}, c.customer_visible_notes) : "",
@@ -102,9 +106,10 @@
       c.can_submit_to_office ? h("p", {}, h("button", {onclick: run(async () => { await api("submit_to_office", {case: name}, true); toast("Sent to our office for review"); caseView(name); })}, "Send to our office for review")) : "",
       c.can_approve ? h("div", {class: "ao-card"}, h("h3", {}, "Please review and approve"), h("p", {}, "Check all information and documents above. Nothing is submitted until you approve; our staff then submit it on the official website."),
         c.forms.filter(f => f.approval_mode === "DocuSeal Signature").map(f => h("p", {}, f.form_template + ": " + f.signature_status + " ", f.signature_status !== "Signed" ? h("button", {class: "secondary", onclick: run(async () => { const r = await api("get_signing_url", {case: name, form_approval: f.name}, true); window.location.href = r.url; })}, "Sign") : "")),
+        c.approval_status === "Approved" ? h("p", {class: "ao-ok"}, "You approved this information. We are waiting for the signature above to be completed.") : [
         h("label", {}, h("input", {type: "checkbox", id: "ao-confirm"}), " I confirm the information is correct and complete"),
         h("button", {onclick: run(async () => { await api("approve_case", {case: name, statement_accepted: +document.getElementById("ao-confirm").checked}, true); caseView(name); })}, "Approve"),
-        h("button", {class: "secondary", onclick: run(async () => { const m = prompt("What needs to change?"); if (m) { await api("request_changes", {case: name, message: m}, true); caseView(name); } })}, "Request changes")) : "",
+        h("button", {class: "secondary", onclick: run(async () => { const m = prompt("What needs to change?"); if (m) { await api("request_changes", {case: name, message: m}, true); caseView(name); } })}, "Request changes")]) : "",
       c.submission ? h("div", {class: "ao-card"}, h("h3", {}, "Submission record"), h("p", {}, "Our staff recorded a submission on " + c.submission.submitted_on + " via " + c.submission.portal + ". Confirmation reference: " + c.submission.confirmation + ". This does not mean the application was accepted or selected."), c.submission.update ? h("p", {}, c.submission.update) : "",
         c.submission.receipt_available ? h("a", {href: "/api/method/" + M + "download_receipt?case=" + encodeURIComponent(name)}, "Download receipt") : "") : "",
       h("h3", {}, "Messages"),
