@@ -2,7 +2,7 @@ frappe.ui.form.on("AO Application Case", {
   refresh(frm) {
     if (frm.is_new()) return;
     frm.dashboard.add_comment(__("Administrative service only. 'SUBMITTED' means staff recorded a submission, not that the customer was accepted."), "blue", true);
-    frappe.call({method: "application_office.staff_api.case_actions", args: {case: frm.doc.name}}).then(r => {
+    frappe.call({type: "GET", method: "application_office.staff_api.case_actions", args: {case: frm.doc.name}}).then(r => {
       (r.message.transitions || []).forEach(t => {
         frm.add_custom_button(t.to_state, () => {
           const fields = [{fieldname: "reason", fieldtype: "Small Text", label: __("Reason (shown to the customer for correction/missing-document requests)"), reqd: t.requires_reason}];
@@ -12,7 +12,7 @@ frappe.ui.form.on("AO Application Case", {
         }, __("Workflow"));
       });
     });
-    frm.add_custom_button(__("Final Checklist"), () => frappe.call({method: "application_office.staff_api.final_checklist", args: {case: frm.doc.name}}).then(r => {
+    frm.add_custom_button(__("Final Checklist"), () => frappe.call({type: "GET", method: "application_office.staff_api.final_checklist", args: {case: frm.doc.name}}).then(r => {
       frappe.msgprint(r.message.map(c => `${c.ok ? "✅" : "❌"} ${frappe.utils.escape_html(c.check)}`).join("<br>"), __("Final review checklist"));
     }), __("Review"));
     frm.add_custom_button(__("Reveal Sensitive Intake (audited)"), () => frappe.call({method: "application_office.staff_api.reveal_intake", args: {case: frm.doc.name}}).then(r => {
