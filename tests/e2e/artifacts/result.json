@@ -1,5 +1,5 @@
 {
- "case": "AC-2026-00783",
+ "case": "AC-2026-00849",
  "results": [
   {
    "name": "portal shows the disclaimer to guests",
@@ -14,7 +14,7 @@
   {
    "name": "set-password link was delivered by e-mail",
    "ok": true,
-   "detail": "http://office.localhost:8000/update-password?key=fd623e8e018"
+   "detail": "http://office.localhost:8000/update-password?key=22f5ad6d920"
   },
   {
    "name": "customer is signed in right after setting the password",
@@ -24,7 +24,7 @@
   {
    "name": "case created with unique reference",
    "ok": true,
-   "detail": "AC-2026-00783"
+   "detail": "AC-2026-00849"
   },
   {
    "name": "fake PDF upload is rejected with an error message",
@@ -92,7 +92,12 @@
    "detail": ""
   },
   {
-   "name": "E2E ABORTED: Protocol error (Runtime.callFunctionOn): Target closed",
+   "name": "finance created a draft invoice linked to the case from the Desk dialog",
+   "ok": true,
+   "detail": "ACC-SINV-2026-00015"
+  },
+  {
+   "name": "E2E ABORTED: Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.",
    "ok": false,
    "detail": ""
   }

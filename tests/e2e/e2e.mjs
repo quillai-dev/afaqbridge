@@ -9,6 +9,7 @@ const st = JSON.parse(fs.readFileSync("/tmp/e2e/state.json"));
 const results = []; let shot = 0;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const caseState = c => execSync(`cd /home/frappe/frappe-bench && su frappe -c "env/bin/python -c \\"import frappe,os;os.chdir('sites');frappe.init('office.localhost',sites_path='.');frappe.connect();print('STATE',frappe.db.get_value('AO Application Case','${c}','case_state'))\\"" 2>/dev/null`, {encoding: "utf8"}).split("STATE ")[1].trim();
+const invoiceFor = c => { try { return execSync(`cd /home/frappe/frappe-bench && su frappe -c "env/bin/python -c \\"import frappe,os;os.chdir('sites');frappe.init('office.localhost',sites_path='.');frappe.connect();print('INV',frappe.db.get_value('Sales Invoice',{'ao_application_case':'${c}'},'name') or '')\\"" 2>/dev/null`, {encoding: "utf8"}).split("INV ")[1].trim(); } catch { return ""; } };
 const py = fn => execSync(`cd /home/frappe/frappe-bench && su frappe -c "env/bin/python /home/claude/application-office/scripts/frappe_run.py office.localhost /home/claude/application-office/tests/e2e/e2e_harness.py ${fn}"`, {encoding: "utf8"});
 const check = (name, ok, detail = "") => { results.push({name, ok: !!ok, detail}); console.log((ok ? "PASS " : "FAIL ") + name + (detail ? "  — " + detail : "")); };
 
@@ -50,6 +51,7 @@ async function fillLabel(page, label, value) {
 async function custOpen(page, caseName) { await page.goto(BASE + "/office-portal"); await page.waitForFunction(n => [...document.querySelectorAll("button")].some(b => b.textContent.includes("Open " + n)), {polling: 500, timeout: 30000}, caseName); await click(page, "button", "Open " + caseName); await sleep(1500); }
 async function deskLogin(browser, who) {
   const ctx = await browser.createBrowserContext(); const page = await ctx.newPage(); page.setDefaultTimeout(30000);
+  page.on("error", e => console.log(`  !! renderer crash (${who}): ${e.message}`)); page.on("close", () => console.log(`  !! page closed (${who})`));
   await page.setViewport({width: 1400, height: 1000});
   await page.goto(BASE + "/login"); await page.type("#login_email", st.staff[who].email, {delay: 10}); await page.type("#login_password", st.staff[who].password, {delay: 10});
   await page.keyboard.press("Enter");
@@ -95,7 +97,9 @@ async function review(reviewerPage, rd, decision, feedback) {
   await reviewerPage.waitForFunction(() => /ao-document-review\/REV-/.test(location.pathname), {polling: 500, timeout: 20000});
 }
 
-const browser = await puppeteer.launch({executablePath: await chromium.executablePath(), args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--no-zygote"], headless: "shell"});
+const LAUNCH = async () => puppeteer.launch({executablePath: await chromium.executablePath(), args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"], headless: "shell"});
+const browser = await LAUNCH();
+browser.on("disconnected", () => console.log("  !! browser process disconnected"));
 let cust, caseName;
 try {
   // ---------------------------------------------------------------- 1 registration (browser)
@@ -161,7 +165,7 @@ try {
 
   // ---------------------------------------------------------------- 6 re-review, request approval
   await review(rev, ids.Passport, "Approved");
-  await workflow(rev, caseName, "READY_FOR_CUSTOMER_APPROVAL"); await snap(rev, "reviewer-ready-for-approval");
+  await workflow(rev, caseName, "READY_FOR_CUSTOMER_APPROVAL"); await snap(rev, "reviewer-ready-for-approval"); await rev.close();   // free memory: the sandbox has 1 CPU / 4 GB
 
   // ---------------------------------------------------------------- 7 customer approves, signs (SIMULATED DocuSeal)
   await custOpen(cust, caseName); await waitText(cust, "Please review and approve"); await snap(cust, "customer-approval-page");
@@ -175,7 +179,7 @@ try {
   await waitText(cust, "being prepared for submission", 30000); check("signed webhook advanced the case to READY_FOR_SUBMISSION", true); await snap(cust, "customer-after-signing");
 
   // ---------------------------------------------------------------- 8 worker: checklist + manual submission
-  const wk = await deskLogin(browser, "worker"); await openCase(wk, caseName);
+  let wk = await deskLogin(browser, "worker"); await openCase(wk, caseName);
   await menu(wk, "Review", "Final Checklist");
   await wk.waitForSelector(".msgprint, .modal.show", {visible: true}); const checklist = await wk.evaluate(() => document.querySelector(".msgprint, .modal.show .modal-body")?.innerText || "");
   check("final checklist shows all checks passed", checklist.includes("✅") && !checklist.includes("❌"), checklist.replace(/\n/g, " | ").slice(0, 160)); await snap(wk, "worker-checklist");
@@ -193,12 +197,19 @@ try {
   await workflow(wk, caseName, "AWAITING_OFFICIAL_UPDATE"); check("workflow moved case to AWAITING_OFFICIAL_UPDATE", caseState(caseName) === "AWAITING_OFFICIAL_UPDATE");
 
   // ---------------------------------------------------------------- 9 finance: invoice
-  const fin = await deskLogin(browser, "finance"); await openCase(fin, caseName, '[data-label="Finance"]');
+  // Memory: close the customer and worker tabs (their contexts, hence sessions, stay alive) while the heavy ERPNext invoice form is open.
+  const custCtx = cust.browserContext(), wkCtx = wk.browserContext(); await cust.close(); await wk.close();
+  // The ERPNext invoice form crashed the long-lived multi-context Chromium in this 1-CPU sandbox, so finance gets a fresh browser instance.
+  const browser2 = await LAUNCH(); browser2.on("disconnected", () => console.log("  !! finance browser disconnected"));
+  const fin = await deskLogin(browser2, "finance"); await openCase(fin, caseName, '[data-label="Finance"]');
   check("finance user sees NO workflow-transition menu on the case", !(await fin.$('[data-label="Workflow"]')));
   await menu(fin, "Finance", "Create Invoice");
   await fin.waitForSelector(".modal.show", {visible: true}); await fin.type('.modal.show [data-fieldname="description"] input', "Application assistance"); await fin.type('.modal.show [data-fieldname="rate"] input', "120");
-  await fin.click(".modal.show .modal-footer button:last-of-type"); await fin.waitForFunction(() => /sales-invoice\//.test(location.pathname), {polling: 500, timeout: 30000});
-  await sleep(3000); await snap(fin, "finance-draft-invoice");
+  await fin.evaluate(() => { window.__realSetRoute = frappe.set_route; frappe.set_route = () => {}; });   // avoid the in-SPA jump that crashes headless Chromium here
+  await fin.click(".modal.show .modal-footer button:last-of-type");
+  let invName = ""; for (let i = 0; i < 30 && !invName; i++) { await sleep(1500); invName = invoiceFor(caseName); }
+  check("finance created a draft invoice linked to the case from the Desk dialog", !!invName, invName); if (!invName) throw new Error("no invoice created");
+  await fin.goto(`${BASE}/app/sales-invoice/${invName}`, {waitUntil: "domcontentloaded"}); await sleep(3000);
   console.log("  step: waiting for the Sales Invoice form to be ready");
   await fin.waitForFunction(() => window.cur_frm && cur_frm.doc && cur_frm.doc.doctype === "Sales Invoice" && cur_frm.doc.docstatus === 0 && !cur_frm.is_new() && !cur_frm.is_dirty(), {polling: 500, timeout: 120000});
   await snap(fin, "finance-invoice-form-ready");
@@ -208,7 +219,10 @@ try {
   await snap(fin, "finance-invoice-submitted");
 
   // ---------------------------------------------------------------- 10 customer sees invoice, update, receipt; close
-  console.log("  step: invoice submitted, closing case"); await workflow(wk, caseName, "COMPLETED"); await workflow(wk, caseName, "CLOSED"); check("case reached CLOSED via the Desk workflow menu", caseState(caseName) === "CLOSED");
+  console.log("  step: invoice submitted, closing case"); await fin.close(); await browser2.close();
+  wk = await wkCtx.newPage(); wk.setDefaultTimeout(30000); await wk.setViewport({width: 1400, height: 1000});
+  cust = await custCtx.newPage(); cust.setDefaultTimeout(30000); await cust.setViewport({width: 1000, height: 1400});
+  await workflow(wk, caseName, "COMPLETED"); await workflow(wk, caseName, "CLOSED"); check("case reached CLOSED via the Desk workflow menu", caseState(caseName) === "CLOSED");
   await cust.goto(BASE + "/office-portal"); await waitText(cust, "Invoices");
   check("customer sees the invoice in the portal", /ACC-SINV/.test(await bodyText(cust))); 
   await click(cust, "button", "Open " + caseName); await waitText(cust, "Submission record");
