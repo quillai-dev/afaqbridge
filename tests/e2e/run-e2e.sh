@@ -11,5 +11,6 @@ export DS_TOKEN=$(python3 -c "import json;print(json.load(open('/tmp/e2e/state.j
 (setsid nohup /home/frappe/frappe-bench/env/bin/python docuseal_sim.py > /tmp/docuseal_sim.out 2>&1 < /dev/null &) ; sleep 2
 (cd "$DIR" && node e2e.mjs); RC=$?
 eval "$RUN flush\")" >/dev/null 2>&1; eval "$RUN report\")" | grep REPORT | sed 's/^REPORT //' > artifacts/server-report.json
+python3 "$DIR/verify_mail.py" || RC=1
 echo "--- DocuSeal simulator log:"; cat /tmp/docuseal_sim.log 2>/dev/null | sort | uniq -c | head
 exit $RC

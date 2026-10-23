@@ -31,10 +31,12 @@ Foreign and non-existent ids are indistinguishable (404). Staff roles: `AO Admin
 | Webhook auth: HMAC, timestamp window, dedupe, size cap | `test_docuseal` |
 | Human-only submission records | `test_workflow` |
 | Session cookie `HttpOnly`, `SameSite`; `Secure` only over HTTPS | HTTP test (HttpOnly/SameSite); Secure **unverified** (needs TLS proxy) |
-| XSS: portal JS never uses innerHTML/eval | static check in HTTP test |
+| XSS: portal JS never uses innerHTML/eval | static check in HTTP test; portal builds DOM with `textContent` |
+| Backups authenticated (HMAC) and verified before restore | 7-case tamper drill, docs/backup-restore.md |
+| Staff 2FA through the real login UI | browser E2E (TOTP). Enrolment screen not driven |
 
 ## Not done / residual risk
-TLS and HSTS (proxy config only, **never run**); CSP headers; encryption at rest (use LUKS/encrypted volumes - host
+TLS and HSTS (proxy config only, **never run**; the `Secure` cookie flag is asserted only by `scripts/rehearsal-docker.sh`, which has not been executed); CSP headers; encryption at rest (use LUKS/encrypted volumes - host
 concern); dependency/image vulnerability scanning; SIEM/alerting; penetration test; DocuSeal/MariaDB hardening;
 off-host backup storage; the reverse proxy must **overwrite** `X-Forwarded-For` or IP lock-outs/rate limits can be evaded.
 Passport scans are stored as private files on the Frappe volume; anyone with host/volume access can read them

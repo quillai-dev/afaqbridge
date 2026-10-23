@@ -12,11 +12,11 @@ Helpdesk, Paperless-ngx and Nextcloud were evaluated and **deliberately deferred
 | | |
 |---|---|
 | Core app on real ERPNext v16.51.1 / Frappe v16.52.0 | ✅ running in the dev sandbox |
-| Automated tests executed | ✅ 61 in-app + 14 HTTP, all passing (2026-10-20), none skipped |
-| Backup → restore drill | ✅ identical data in scratch site |
-| DocuSeal | 🟡 client + HMAC webhook implemented; tested **only against a simulator** - never run against real DocuSeal |
-| Docker Compose deployment | 🟡 written from pinned `frappe_docker`, YAML-validated, **never started** (no Docker in the build sandbox) |
-| Customer portal UI | 🟡 API fully tested; the page itself was served and syntax-checked but **not driven in a browser** |
+| Automated tests executed | ✅ 61 in-app + 14 HTTP + 23-check browser E2E, all passing (2026-10-22), none skipped |
+| Backups | ✅ encrypted + HMAC-authenticated; 7/7 tamper cases refused; restore drills done (counts compared on the old format only) |
+| DocuSeal | 🟡 client + HMAC webhook implemented; tested **only against a simulator** (in-app tests + browser E2E) - never run against real DocuSeal (blocked: no Docker/rubygems in the build sandbox) |
+| Docker Compose deployment | 🟡 written from pinned `frappe_docker`; merged config validated with the real Compose v2.40.3 binary; **never started**. Run `scripts/rehearsal-docker.sh` on a Docker host (docs/rehearsal-docker.md) |
+| Customer portal + Desk UI | ✅ driven end-to-end in a real headless Chromium (customer, reviewer, case worker, finance); invoice *submission* not a browser step (see implementation-plan) |
 | Desk Workspace page / Script Reports | ⛔ not built (lists, forms and action buttons exist) |
 | Helpdesk / Paperless / Nextcloud / Telegram | ⛔ not implemented (deferred) |
 | Vulnerability scanning, TLS verification, pen-test | ⛔ not done |

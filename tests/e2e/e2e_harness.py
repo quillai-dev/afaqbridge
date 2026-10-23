@@ -74,6 +74,8 @@ def flush():
         if not frappe.db.count("Email Queue", {"status": "Not Sent"}):
             break
         time.sleep(1)
+    from application_office.notifications import refresh_delivery_status
+    refresh_delivery_status(); frappe.db.commit()
     print("queue", frappe.db.sql("select status,count(*) from `tabEmail Queue` group by status"))
 
 
@@ -93,3 +95,14 @@ def report():
     out["notifications"] = frappe.get_all("AO Notification Log", filters={"customer": cust}, fields=["event_key", "status", "creation"], order_by="creation asc")
     for n in out["notifications"]: n["creation"] = str(n["creation"])
     print("REPORT", json.dumps(out, default=str))
+
+
+def submit_invoice():
+    """Submit the draft invoice created through the Desk dialog, acting as the finance user (not a browser step)."""
+    st = json.load(open(STATE)); email = st["customer"]["email"]
+    cust = frappe.db.get_value("Portal User", {"user": email}, "parent")
+    case = frappe.get_all("AO Application Case", filters={"customer": cust}, pluck="name", order_by="creation desc", limit=1)[0]
+    name = frappe.db.get_value("Sales Invoice", {"ao_application_case": case, "docstatus": 0}, "name")
+    frappe.set_user(st["staff"]["finance"]["email"])
+    inv = frappe.get_doc("Sales Invoice", name); inv.submit(); frappe.db.commit()
+    print("submitted", name, inv.status)
