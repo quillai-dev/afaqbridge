@@ -1,5 +1,5 @@
 {
- "case": "AC-2026-00922",
+ "case": "AC-2026-00973",
  "results": [
   {
    "name": "portal shows the disclaimer to guests",
@@ -14,7 +14,7 @@
   {
    "name": "set-password link was delivered by e-mail",
    "ok": true,
-   "detail": "http://office.localhost:8000/update-password?key=cd65dbfcd9a"
+   "detail": "http://office.localhost:8000/update-password?key=c022106e2f8"
   },
   {
    "name": "customer is signed in right after setting the password",
@@ -24,7 +24,7 @@
   {
    "name": "case created with unique reference",
    "ok": true,
-   "detail": "AC-2026-00922"
+   "detail": "AC-2026-00973"
   },
   {
    "name": "fake PDF upload is rejected with an error message",
@@ -94,7 +94,7 @@
   {
    "name": "finance created a draft invoice linked to the case from the Desk dialog",
    "ok": true,
-   "detail": "ACC-SINV-2026-00018"
+   "detail": "ACC-SINV-2026-00019"
   },
   {
    "name": "case reached CLOSED via the Desk workflow menu",
