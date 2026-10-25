@@ -33,6 +33,11 @@ CUSTOMER_STATUS_LABELS = {
     "CLOSED": "Closed",
 }
 
+def status_label(state: str) -> str:
+    """Customer-facing status in the CURRENT language (the msgids are the English strings above; see locale/ar.po)."""
+    return _(CUSTOMER_STATUS_LABELS.get(state, state))
+
+
 # Default transitions: (from, to, roles, requires_reason, notification_event)
 S, W, R, A, C = "AO Case Worker", "AO Reviewer", None, "AO Administrator", CUSTOMER_ROLE
 DEFAULT_TRANSITIONS = [

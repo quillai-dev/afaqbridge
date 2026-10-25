@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="AfaqBridge"><title>AfaqBridge</title><defs><mask id="gapd" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+<rect width="64" height="64" fill="#fff"/><rect x="0" y="34.5" width="64" height="11" fill="#000"/></mask></defs>
+<path d="M14 56 C14 31 23 15 32 8 C41 15 50 31 50 56" fill="none" stroke="#102A43" stroke-width="7.5" stroke-linejoin="round" mask="url(#gapd)"/>
+<rect x="3" y="37.5" width="58" height="5" rx="2.5" fill="#20B8A6"/></svg>

@@ -1,0 +1,7 @@
+/* Direction-sensitive details for the desk. Frappe flips the layout itself when the language is RTL (it loads
+ * its own *-rtl bundle); these rules only keep data that must stay left-to-right readable inside Arabic UI. */
+:root { --afaqbridge-navy: #102A43; --afaqbridge-turquoise: #20B8A6; }
+[dir="rtl"] input[type="email"], [dir="rtl"] input[type="url"], [dir="rtl"] input[type="tel"],
+[dir="rtl"] .frappe-control[data-fieldtype="Phone"] input, [dir="rtl"] .frappe-control[data-fieldtype="Code"] .ace_editor,
+[dir="rtl"] .ao-ltr, bdi.ao-ltr { direction: ltr; unicode-bidi: plaintext; }
+[dir="rtl"] input[type="email"], [dir="rtl"] input[type="url"] { text-align: right; }

@@ -23,6 +23,7 @@ def after_install():
     configure_customer_naming()
     harden_system_settings()
     scope_mfa()
+    apply_branding_and_language()
     frappe.db.commit()
 
 
@@ -32,6 +33,7 @@ def after_migrate():
     grant_erp_permissions()
     seed()
     scope_mfa()
+    apply_branding_and_language()
 
 
 ERP_PERMS = {
@@ -73,10 +75,71 @@ def scope_mfa():
         frappe.db.set_value("Role", r, "two_factor_auth", 0)
 
 
+DEFAULT_SENSITIVE_CONSENT = ("I consent to the processing of my identity documents and other sensitive personal data "
+                             "solely for the purpose of preparing the application(s) I request.")
+BRAND = "AfaqBridge"
+LOGO = "/assets/application_office/images/afaqbridge-logo.svg"
+ICON = "/assets/application_office/images/afaqbridge-icon.svg"
+FAVICON = "/assets/application_office/images/favicon.svg"
+# Values that mean "still the stock/previous default" - only these are replaced, administrator edits are kept.
+_STOCK = (None, "", "Frappe", "ERPNext", "Frappe Framework", "Application Office", "Example Office (set in AO Settings)")
+
+
+def _set(doctype: str, field: str, value, replace=_STOCK, single=True):
+    cur = frappe.db.get_single_value(doctype, field)
+    if cur in replace or (isinstance(cur, str) and cur.startswith("/assets/frappe/")):
+        frappe.db.set_single_value(doctype, field, value)
+
+
+def apply_branding_and_language():
+    """Idempotent, non-destructive. Safe to run on an EXISTING site: it only sets branding / language settings and
+    never touches cases, documents, signing records or other data."""
+    # 1. languages: Arabic + English enabled, nothing else offered in the picker
+    for code, name in (("ar", "العربية"), ("en", "English")):
+        if frappe.db.exists("Language", code):
+            frappe.db.set_value("Language", code, "enabled", 1)
+        else:
+            frappe.get_doc({"doctype": "Language", "language_code": code, "language_name": name, "enabled": 1}).insert(ignore_permissions=True)
+    frappe.db.sql("update `tabLanguage` set enabled=0 where name not in ('ar','en')")
+    # 2. default language: Arabic (users that explicitly chose English keep it)
+    if frappe.db.get_single_value("System Settings", "language") in (None, "", "en"):
+        frappe.db.set_single_value("System Settings", "language", "ar")
+    # 3. branding (stock values only)
+    _set("System Settings", "app_name", BRAND)
+    _set("Website Settings", "app_name", BRAND)
+    _set("Website Settings", "title_prefix", BRAND)
+    _set("Website Settings", "app_logo", LOGO)
+    _set("Website Settings", "splash_image", ICON)
+    _set("Website Settings", "favicon", FAVICON)
+    _set("Website Settings", "footer_logo", LOGO)
+    _set("Navbar Settings", "app_logo", ICON)
+    _ensure_language_menu_items()
+    frappe.db.set_single_value("Website Settings", "show_language_picker", 1)  # Frappe's own picker on login/web pages
+    # 4. office name shown in e-mails / portal
+    if frappe.db.get_single_value("AO Settings", "office_name") in _STOCK:
+        frappe.db.set_single_value("AO Settings", "office_name", BRAND)
+    frappe.clear_cache()
+
+
+def _ensure_language_menu_items():
+    """AR / EN entries in the desk user menu via Frappe's official Navbar Settings (no DOM patching)."""
+    ns = frappe.get_doc("Navbar Settings")
+    have = {i.item_label for i in ns.settings_dropdown}
+    changed = False
+    for label, code in (("العربية", "ar"), ("English", "en")):
+        if label not in have:
+            ns.append("settings_dropdown", {"item_label": label, "item_type": "Action",
+                                            "action": f"application_office.switch_language('{code}')", "is_standard": 0})
+            changed = True
+    if changed:
+        ns.flags.ignore_mandatory = True
+        ns.save(ignore_permissions=True)
+
+
 def custom_fields():
     return {
         "Customer": [
-            {"fieldname": "ao_section", "fieldtype": "Section Break", "label": "Application Office", "insert_after": "language"},
+            {"fieldname": "ao_section", "fieldtype": "Section Break", "label": "AfaqBridge", "insert_after": "language"},
             {"fieldname": "ao_customer_reference", "fieldtype": "Data", "label": "Customer Reference", "read_only": 1,
              "unique": 1, "no_copy": 1, "insert_after": "ao_section"},
             {"fieldname": "ao_account_status", "fieldtype": "Select", "label": "Account Status",
@@ -99,13 +162,12 @@ def seed():
     s = frappe.get_doc("AO Settings")
     changed = False
     if not s.office_name:
-        s.office_name, changed = "Example Office (set in AO Settings)", True
+        s.office_name, changed = "AfaqBridge", True
     if not s.disclaimer_text:
         s.disclaimer_text, changed = DEFAULT_DISCLAIMER, True
     if not s.sensitive_data_consent_text:
         s.sensitive_data_consent_text, changed = (
-            "I consent to the processing of my identity documents and other sensitive personal data solely for "
-            "the purpose of preparing the application(s) I request.", True)
+            DEFAULT_SENSITIVE_CONSENT, True)
     if not s.retention_rules:
         for cat, yrs in (("Identity Document", 2), ("Educational Record", 3), ("Form / Approval", 7),
                          ("Submission Evidence", 7), ("Financial", 10), ("Other", 3)):

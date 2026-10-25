@@ -15,7 +15,7 @@ from application_office.common import (
     customer_email, get_customer_case, require_customer, settings, user_rate_limit,
 )
 from application_office.scheduler import format_deadline
-from application_office.workflow import CUSTOMER_STATUS_LABELS, compute_case_hash, transition_case
+from application_office.workflow import compute_case_hash, status_label, transition_case
 
 CUSTOMER_EDITABLE_STATES = ("NEW", "WAITING_FOR_DOCUMENTS", "CORRECTION_REQUIRED")
 MAX_OPEN_CASES = 10
@@ -40,10 +40,13 @@ def csrf_token() -> str:
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def bootstrap() -> dict:
     s = settings()
-    out = {"office_name": s.office_name, "disclaimer": strip_html(s.disclaimer_text or ""),
+    from application_office.install import DEFAULT_DISCLAIMER, DEFAULT_SENSITIVE_CONSENT
+    from application_office.localization import translate_if_default
+    out = {"office_name": s.office_name, "disclaimer": translate_if_default(s.disclaimer_text, DEFAULT_DISCLAIMER),
            "terms_url": s.terms_url, "privacy_url": s.privacy_url,
            "terms_version": s.terms_version, "privacy_version": s.privacy_version,
-           "sensitive_consent_text": s.sensitive_data_consent_text, "user": None}
+           "sensitive_consent_text": translate_if_default(s.sensitive_data_consent_text, DEFAULT_SENSITIVE_CONSENT),
+           "language": frappe.local.lang, "user": None}
     cust = customers_for_session()
     if cust:
         out["user"] = {"email": frappe.session.user, "customer": cust,
@@ -59,11 +62,12 @@ def customers_for_session():
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
 @rate_limit(limit=10, seconds=3600)
-def register(email: str, full_name: str, language: str = "en", accept_terms: int = 0, accept_privacy: int = 0,
+def register(email: str, full_name: str, language: str = "", accept_terms: int = 0, accept_privacy: int = 0,
              accept_sensitive: int = 0, accept_marketing: int = 0) -> dict:
     consents = {"Terms of Service": cint(accept_terms), "Privacy Notice": cint(accept_privacy),
                 "Sensitive Data Processing": cint(accept_sensitive), "Marketing": cint(accept_marketing)}
-    customers.create_customer_with_user(email, full_name, (language or "en")[:10], consents)
+    from application_office.localization import normalise, default_language_for_new_user
+    customers.create_customer_with_user(email, full_name, normalise(language) or default_language_for_new_user(), consents)
     frappe.clear_messages()  # Frappe may queue msgprints for new users only; responses must be identical either way
     # Same response whether or not the address was already registered (prevents account enumeration).
     return {"ok": True, "message": _("If the address can be registered, a message with a link to set your password "
@@ -85,7 +89,7 @@ def _program_summary(p) -> dict:
         if p.last_verified_on else 9999
     startable, reason = True, ""
     if verified_age > stale_days:
-        startable, reason = False, "Our staff are re-verifying the official information; please contact the office."
+        startable, reason = False, _("Our staff are re-verifying the official information; please contact the office.")
     return {"name": p.name, "program_name": p.program_name, "category": p.program_category,
             "sponsor": p.sponsoring_organization, "requirements_url": p.official_requirements_url,
             "opening": format_deadline(p.opening_datetime, p.time_zone) if p.opening_datetime else None,
@@ -108,7 +112,7 @@ def list_services() -> list[dict]:
 def _case_row(c) -> dict:
     prog = frappe.db.get_value("AO Program", c.program, ["program_name", "time_zone"], as_dict=True)
     return {"name": c.name, "program": c.program, "program_name": prog.program_name,
-            "state": c.case_state, "status_label": CUSTOMER_STATUS_LABELS.get(c.case_state, c.case_state),
+            "state": c.case_state, "status_label": status_label(c.case_state),
             "deadline": format_deadline(c.applicable_deadline, prog.time_zone) if c.applicable_deadline else None,
             "opening_date": str(c.opening_date)}
 

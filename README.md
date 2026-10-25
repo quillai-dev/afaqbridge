@@ -1,4 +1,4 @@
-### Application Office
+### AfaqBridge (app `application_office`)
 
 Administrative application-processing workflow for an office
 
