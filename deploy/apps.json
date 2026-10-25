@@ -1,4 +1,12 @@
+
 [
-  {"url": "https://github.com/frappe/erpnext", "branch": "v16.51.1"},
-  {"url": "https://github.com/quillai-dev/afaqbridge.git", "branch": "main"}
+  {
+    "url": "https://github.com/frappe/erpnext",
+    "branch": "v16.51.1"
+  },
+  {
+    "url": "https://github.com/quillai-dev/afaqbridge",
+    "branch": "application_office"
+  }
 ]
+
