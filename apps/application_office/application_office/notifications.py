@@ -29,18 +29,39 @@ _DEFAULT_BODY = {
 }
 
 
+
+# Arabic defaults (same Jinja variables). Seeded as "<event>-ar"; existing administrator edits are never overwritten.
+_DEFAULT_BODY_AR = {
+    "registration_success": ("مرحبًا بك في {{ office_name }}", "<p>مرحبًا {{ customer_name }}،</p><p>حسابك جاهز.</p>{% if set_password_url %}<p>يُرجى تعيين كلمة المرور (وهذا يؤكد أيضًا عنوان بريدك الإلكتروني): <a href='{{ set_password_url }}'>{{ set_password_url }}</a></p>{% endif %}<p>ثم سجّل الدخول عبر <a href='{{ portal_url }}'>{{ portal_url }}</a>.</p><p>{{ disclaimer }}</p>"),
+    "application_received": ("استلمنا طلبك {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>فتحنا الملف <b>{{ case_reference }}</b> لبرنامج {{ program_name }}. يُرجى رفع المستندات المطلوبة عبر بوابتك.</p>"),
+    "missing_documents": ("مستندات مطلوبة للملف {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>ما زلنا بحاجة إلى مستندات للملف {{ case_reference }}.</p>{% if message %}<p>{{ message }}</p>{% endif %}<p><a href='{{ portal_url }}'>افتح بوابتك</a></p>"),
+    "correction_request": ("مطلوب إجراء بخصوص {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>هناك تصحيحات مطلوبة للملف {{ case_reference }}.</p>{% if message %}<p>{{ message }}</p>{% endif %}<p><a href='{{ portal_url }}'>افتح بوابتك</a></p>"),
+    "review_complete": ("اكتملت مراجعة المستند للملف {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>أنهينا مراجعة مستند للملف {{ case_reference }}. الحالة: {{ status_label }}.</p>{% if message %}<p>{{ message }}</p>{% endif %}"),
+    "approval_request": ("يُرجى مراجعة {{ case_reference }} والموافقة عليه", "<p>مرحبًا {{ customer_name }}،</p><p>بيانات طلبك جاهزة لموافقتك. لن يُقدَّم أي شيء قبل موافقتك وقبل أن يقدّمه فريقنا على الموقع الرسمي.</p><p><a href='{{ portal_url }}'>راجع ووافق</a></p>"),
+    "deadline_reminder": ("تذكير بالموعد النهائي للملف {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>الموعد النهائي المسجّل لدينا لبرنامج {{ program_name }} هو <b>{{ deadline }}</b>. الحالة الحالية: {{ status_label }}.</p><p>يُرجى التأكد من المواعيد على الموقع الرسمي، فقد تتغير المواعيد النهائية.</p>"),
+    "submission_recorded": ("تم تسجيل التقديم للملف {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>سجّل فريقنا أن طلبك قد قُدّم على الموقع الرسمي. هذا لا يعني أنه قُبل أو تم اختياره.</p>"),
+    "official_update": ("تحديث بخصوص {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>الحالة: {{ status_label }}.</p>{% if message %}<p>{{ message }}</p>{% endif %}"),
+    "invoice_outstanding": ("فاتورة مستحقة {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>لديك فاتورة مستحقة. {{ message }}</p>"),
+    "case_closed": ("تم إغلاق الملف {{ case_reference }}", "<p>مرحبًا {{ customer_name }}،</p><p>تم إغلاق الملف {{ case_reference }}. تُحفظ السجلات وفق سياسة الاحتفاظ لدينا.</p>"),
+}
+
 _OLD_REG = "<p>Hello {{ customer_name }},</p><p>Your account is ready. Sign in at <a href='{{ portal_url }}'>{{ portal_url }}</a>.</p><p>{{ disclaimer }}</p>"
 
 
 def seed_templates():
-    for key, (subject, body) in _DEFAULT_BODY.items():
-        name = f"{key}-en"
+    for lang, bodies in (("en", _DEFAULT_BODY), ("ar", _DEFAULT_BODY_AR)):
+        _seed_language(lang, bodies)
+
+
+def _seed_language(lang, bodies):
+    for key, (subject, body) in bodies.items():
+        name = f"{key}-{lang}"
         if frappe.db.exists("AO Notification Template", name):
             # upgrade an untouched previous default body (never overwrite administrator edits)
-            if key == "registration_success" and frappe.db.get_value("AO Notification Template", name, "body") == _OLD_REG:
+            if lang == "en" and key == "registration_success" and frappe.db.get_value("AO Notification Template", name, "body") == _OLD_REG:
                 frappe.db.set_value("AO Notification Template", name, "body", body)
         else:
-            frappe.get_doc({"doctype": "AO Notification Template", "event_key": key, "language": "en",
+            frappe.get_doc({"doctype": "AO Notification Template", "event_key": key, "language": lang,
                             "enabled": 1, "subject": subject, "body": body}).insert(ignore_permissions=True)
 
 
@@ -78,8 +99,12 @@ def send(event_key: str, customer: str, dedupe_key: str, context: dict | None = 
              status="Skipped", error="Template missing or disabled")
         return None
     s = settings()
+    from application_office.install import DEFAULT_DISCLAIMER
+    from application_office.localization import translate_if_default, language
+    with language(cust.language):  # the disclaimer is rendered in the RECIPIENT's language
+        disclaimer = translate_if_default(s.disclaimer_text, DEFAULT_DISCLAIMER)
     ctx = {"customer_name": cust.customer_name, "office_name": s.office_name,
-           "disclaimer": frappe.utils.strip_html(s.disclaimer_text or ""), "portal_url": get_url("/office-portal"),
+           "disclaimer": disclaimer, "portal_url": get_url("/office-portal"),
            "case_reference": case or "", **(context or {})}
     log = _log(dedupe_key, event_key=event_key, case=case, customer=customer, recipient=recipient, status="Queued")
     if not log:
@@ -99,11 +124,14 @@ def send(event_key: str, customer: str, dedupe_key: str, context: dict | None = 
 
 
 def notify_case(event_key: str, case, dedupe_key: str, message: str | None = None, extra: dict | None = None):
-    from application_office.workflow import CUSTOMER_STATUS_LABELS
+    from application_office.workflow import status_label
+    from application_office.localization import language
     from application_office.scheduler import format_deadline
     program = frappe.db.get_value("AO Program", case.program, ["program_name", "time_zone"], as_dict=True)
+    with language(frappe.db.get_value("Customer", case.customer, "language")):  # recipient's language
+        label = status_label(case.case_state)
     ctx = {"program_name": program.program_name,
-           "status_label": CUSTOMER_STATUS_LABELS.get(case.case_state, case.case_state),
+           "status_label": label,
            "deadline": format_deadline(case.applicable_deadline, program.time_zone) if case.applicable_deadline else "",
            "message": message or "", **(extra or {})}
     return send(event_key, case.customer, dedupe_key, ctx, case=case.name)

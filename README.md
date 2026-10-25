@@ -1,4 +1,7 @@
-# Application Office Platform
+# AfaqBridge platform
+
+> Repository / Compose project / app / Python package are still named `application-office` / `application_office` on purpose
+> (renaming them would change volume names, module paths and database identities). **AfaqBridge** is the user-facing brand.
 
 Self-hosted workflow platform for an office that **assists customers with applications** (DV lottery, scholarships such as
 Erasmus Mundus / DAAD, exchange programs, other configurable services). Customers submit information and documents; employees review,
@@ -15,7 +18,7 @@ Helpdesk, Paperless-ngx and Nextcloud were evaluated and **deliberately deferred
 | Automated tests executed | ✅ 61 in-app + 14 HTTP + 23-check browser E2E, all passing (2026-10-22), none skipped |
 | Backups | ✅ encrypted + HMAC-authenticated; 7/7 tamper cases refused; restore drills done (counts compared on the old format only) |
 | DocuSeal | 🟡 client + HMAC webhook implemented; tested **only against a simulator** (in-app tests + browser E2E) - never run against real DocuSeal (blocked: no Docker/rubygems in the build sandbox) |
-| Docker Compose deployment | 🟡 written from pinned `frappe_docker`; merged config validated with the real Compose v2.40.3 binary; **never started**. Run `scripts/rehearsal-docker.sh` on a Docker host (docs/rehearsal-docker.md) |
+| Docker Compose deployment | 🟡 written from pinned `frappe_docker`; merged config (dev and prod) validated with the real Compose v2.40.3 binary; **never started** (no Docker daemon in the build sandbox). The nginx edge, the Arabic-first behaviour and the browser flows were verified WITHOUT Docker - see [docs/localization.md](docs/localization.md) and [docs/deployment.md](docs/deployment.md). Run `scripts/rehearsal-docker.sh` on a Docker host (docs/rehearsal-docker.md) |
 | Customer portal + Desk UI | ✅ driven end-to-end in a real headless Chromium (customer, reviewer, case worker, finance); invoice *submission* not a browser step (see implementation-plan) |
 | Desk Workspace page / Script Reports | ⛔ not built (lists, forms and action buttons exist) |
 | Helpdesk / Paperless / Nextcloud / Telegram | ⛔ not implemented (deferred) |

@@ -1,7 +1,7 @@
 [project]
 name = "application_office"
 authors = [
-    { name = "Application Office", email = "admin@example.invalid"}
+    { name = "AfaqBridge", email = "admin@example.invalid"}
 ]
 description = "Administrative application-processing workflow for an office"
 requires-python = ">=3.14"

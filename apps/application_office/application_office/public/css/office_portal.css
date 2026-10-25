@@ -6,3 +6,14 @@
 .ao-app label{display:block;margin:.5rem 0 .15rem;font-weight:600}.ao-app input[type=text],.ao-app input[type=email],.ao-app select,.ao-app textarea{width:100%;padding:6px;border:1px solid #c0c6cc;border-radius:4px}
 .ao-app button{padding:6px 14px;border-radius:6px;border:1px solid #1f6feb;background:#1f6feb;color:#fff;cursor:pointer}.ao-app button.secondary{background:#fff;color:#1f6feb}
 .ao-msg{padding:.4rem .7rem;border-radius:6px;margin:.3rem 0;background:#f5f7fa}.ao-msg.customer{background:#e8f1ff}
+/* language switch + direction handling (the page direction itself comes from Frappe: <html dir="rtl"> for Arabic) */
+.ao-langbar{display:flex;gap:.4rem;justify-content:flex-end;margin-bottom:.6rem}
+.ao-app .ao-lang{background:#fff;color:#102A43;border:1px solid #102A43;padding:3px 12px}
+.ao-app .ao-lang.active{background:#102A43;color:#fff}
+.ao-app button{margin-inline-end:.4rem}
+.ao-app input[type=email],.ao-app input[dir=ltr]{text-align:start}
+.ao-app input[type=file]{max-width:100%}
+.ao-app bdi{unicode-bidi:isolate}
+.ao-app a{color:#0b6f66}
+.ao-app button:focus-visible,.ao-app a:focus-visible,.ao-app input:focus-visible,.ao-app select:focus-visible,.ao-app textarea:focus-visible{outline:2px solid #20B8A6;outline-offset:2px}
+[dir=rtl] .ao-app{font-size:16px;line-height:1.7}

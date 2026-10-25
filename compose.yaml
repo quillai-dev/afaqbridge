@@ -1,10 +1,51 @@
-# Office-specific layer. Use TOGETHER with the pinned upstream frappe_docker files - see `make up`:
-#   docker compose -f upstream/frappe_docker/compose.yaml \
-#                  -f upstream/frappe_docker/overrides/compose.mariadb.yaml \
-#                  -f upstream/frappe_docker/overrides/compose.redis.yaml \
-#                  -f upstream/frappe_docker/overrides/compose.https.yaml -f compose.yaml ...
-# STATUS: statically validated only (YAML + structure). It has NOT been run: the build sandbox has no Docker.
+# AfaqBridge service layer. Used TOGETHER with the pinned upstream frappe_docker files (see Makefile / docs/deployment.md):
+#   docker compose --env-file .env -f upstream/frappe_docker/compose.yaml \
+#     -f upstream/frappe_docker/overrides/compose.mariadb.yaml -f upstream/frappe_docker/overrides/compose.redis.yaml \
+#     -f compose.yaml -f compose.dev.yaml        (local)   |   ... -f compose.yaml -f compose.prod.yaml   (real domain + TLS)
+# Public entry point: the single `edge` nginx service. Upstream's Traefik override (compose.https.yaml) is NOT used any more.
+# The upstream `frontend` service is itself nginx (assets, site-name header, /socket.io); it stays internal behind `edge`.
+# STATUS: validated with `docker compose config` only; the stack has not been started in the build sandbox (no Docker daemon).
 services:
+  # Upstream's own nginx: internal only (no published port). Trust X-Forwarded-For only from the private compose
+  # network, i.e. from `edge`, so client IPs (rate limits, audit log) are real.
+  frontend:
+    environment:
+      UPSTREAM_REAL_IP_ADDRESS: ${UPSTREAM_REAL_IP_ADDRESS:-172.16.0.0/12}
+      PROXY_READ_TIMEOUT: ${PROXY_READ_TIMEOUT:-120}
+      CLIENT_MAX_BODY_SIZE: ${CLIENT_MAX_BODY_SIZE:-50m}
+
+  # The ONLY service that is ever published to the host (ports are added by compose.dev.yaml / compose.prod.yaml).
+  edge:
+    image: ${EDGE_IMAGE:-nginx:1.28.0-alpine}
+    restart: unless-stopped
+    # Frappe's realtime (socket.io) service authenticates every connection by calling back http(s)://<SITE_NAME>/api/...
+    # (the Origin header, without port). Inside the Docker network that name must therefore resolve to THIS edge, otherwise
+    # the call goes to the container's own loopback (*.localhost) or out to the public Internet and back (hairpin).
+    networks:
+      default:
+        aliases: ["${SITE_NAME}"]
+    entrypoint: ["/bin/sh", "/opt/afaqbridge/edge-run.sh"]
+    environment:
+      EDGE_MODE: ${EDGE_MODE:-dev}
+      SITE_NAME: ${SITE_NAME:?}
+      DOCUSEAL_HOST: ${DOCUSEAL_HOST:?}
+      TLS_CERT_NAME: ${TLS_CERT_NAME:-afaqbridge}
+      EDGE_CLIENT_MAX_BODY_SIZE: ${CLIENT_MAX_BODY_SIZE:-50m}
+    volumes:
+      - ./deploy/edge/edge-run.sh:/opt/afaqbridge/edge-run.sh:ro
+      - ./deploy/edge/templates:/opt/afaqbridge/templates:ro
+      - letsencrypt:/etc/letsencrypt:ro
+      - acme-webroot:/var/www/certbot:ro
+    depends_on:
+      frontend: {condition: service_started}
+      docuseal: {condition: service_started}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8081/healthz >/dev/null || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+    deploy: {resources: {limits: {cpus: "0.5", memory: 128m}}}
+
   backend:
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS -H 'Host: ${SITE_NAME}' http://localhost:8000/api/method/ping || exit 1"]
@@ -32,9 +73,12 @@ services:
           --admin-password "$$ADMIN_PASSWORD" --install-app erpnext --install-app application_office
         bench --site $$SITE_NAME set-config throttle_user_limit 60 --parse
         # links in e-mails (set-password etc.) are built from host_name; without it they point at the wrong origin
-        bench --site $$SITE_NAME set-config host_name https://$$SITE_NAME
+        bench --site $$SITE_NAME set-config host_name $$SITE_URL
+        # Arabic-first defaults (idempotent; also re-applied by every `bench migrate`)
+        bench --site $$SITE_NAME execute application_office.install.apply_branding_and_language
     environment:
       SITE_NAME: ${SITE_NAME:?}
+      SITE_URL: ${SITE_URL:-https://${SITE_NAME}}
       DB_PASSWORD: ${DB_PASSWORD:?}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?}
 
@@ -63,14 +107,9 @@ services:
       DATABASE_URL: postgresql://docuseal:${DOCUSEAL_DB_PASSWORD}@docuseal-db:5432/docuseal
       SECRET_KEY_BASE: ${DOCUSEAL_SECRET_KEY_BASE:?}
       HOST: ${DOCUSEAL_HOST:?}
-      FORCE_SSL: ${DOCUSEAL_HOST}
+      # Rails force_ssl/secure cookies: set to the host in production (TLS), empty for local HTTP development.
+      FORCE_SSL: ${DOCUSEAL_FORCE_SSL:-}
     volumes: [docuseal-data:/data/docuseal]
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.docuseal.loadbalancer.server.port=3000
-      - traefik.http.routers.docuseal.entrypoints=websecure
-      - traefik.http.routers.docuseal.tls.certresolver=main-resolver
-      - traefik.http.routers.docuseal.rule=Host(`${DOCUSEAL_HOST}`)
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://localhost:3000/ >/dev/null || exit 1"]
       interval: 30s
@@ -81,3 +120,5 @@ services:
 volumes:
   docuseal-db:
   docuseal-data:
+  letsencrypt:        # certificates (prod) - new volume, nothing existing is touched
+  acme-webroot:

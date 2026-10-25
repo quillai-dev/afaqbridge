@@ -1,0 +1,8 @@
+# PROD, before the first certificate exists: answer ACME HTTP-01 only.
+include /etc/nginx/afaqbridge/common.inc;
+server {
+    listen 80 default_server;
+    server_name _;
+    location /.well-known/acme-challenge/ { root /var/www/certbot; }
+    location / { default_type text/plain; return 503 "TLS certificate not issued yet\n"; }
+}

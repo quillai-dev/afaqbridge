@@ -1,0 +1,2040 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AfaqBridge\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "AO Application Case"
+msgstr "ملف طلب (AO)"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Applicable Deadline"
+msgstr "الموعد النهائي المعتمد"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Approved By User"
+msgstr "وافق عليها المستخدم"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Approved Data Hash"
+msgstr "بصمة البيانات المعتمدة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Approved On"
+msgstr "تاريخ الموافقة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Assigned Employee"
+msgstr "الموظف المكلّف"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Blocks automatic deletion eligibility"
+msgstr "يمنع أهلية الحذف التلقائي"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Changed only through the workflow engine (Actions menu)."
+msgstr "تُغيَّر فقط عبر محرك سير العمل (قائمة الإجراءات)."
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Changes Requested"
+msgstr "طُلبت تعديلات"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Closure Date"
+msgstr "تاريخ الإغلاق"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Customer Approval"
+msgstr "موافقة العميل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Customer Approval Required"
+msgstr "موافقة العميل مطلوبة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Customer Visible Notes"
+msgstr "ملاحظات ظاهرة للعميل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Deadline Time Zone"
+msgstr "النطاق الزمني للموعد النهائي"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Deletion Status"
+msgstr "حالة الحذف"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Eligible"
+msgstr "مؤهل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Final Customer Approval Status"
+msgstr "الحالة النهائية لموافقة العميل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Intake Completed"
+msgstr "اكتمل نموذج المعلومات"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Intake Data"
+msgstr "بيانات الطلب"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Internal Notes"
+msgstr "ملاحظات داخلية"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid ""
+"Interpreted in the program's time zone. Staff-verified; copied from the "
+"program at creation and editable."
+msgstr ""
+"يُفسَّر بحسب النطاق الزمني للبرنامج. تحقق منه الفريق، ويُنسخ من البرنامج عند"
+" الإنشاء ويمكن تعديله."
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Legal Hold"
+msgstr "حجز قانوني"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Normal"
+msgstr "عادية"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Official Confirmation Reference"
+msgstr "مرجع التأكيد الرسمي"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Official Submission (recorded by a human employee)"
+msgstr "التقديم الرسمي (يسجله موظف بشري)"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Official Submission Timestamp"
+msgstr "وقت التقديم الرسمي"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Program"
+msgstr "البرنامج"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Retention"
+msgstr "الاحتفاظ"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Retention Until"
+msgstr "الاحتفاظ حتى"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "SHA-256 of the intake data + document versions the customer approved"
+msgstr "SHA-256 لبيانات الطلب وإصدارات المستندات التي وافق عليها العميل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Service Type"
+msgstr "نوع الخدمة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Staff only. Never shown to the customer or included in notifications."
+msgstr "للموظفين فقط. لا تظهر للعميل ولا تُضمَّن في الإشعارات أبدًا."
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "State History"
+msgstr "سجل الحالات"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "State Log"
+msgstr "سجل الحالة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.json
+msgid "Visible to the customer in the portal."
+msgstr "تظهر للعميل في البوابة."
+
+#: application_office/doctype/ao_application_case/ao_application_case.py
+msgid "Program {0} is not currently available for new cases"
+msgstr "البرنامج {0} غير متاح حاليًا لفتح ملفات جديدة"
+
+#: application_office/doctype/ao_application_case/ao_application_case.py
+msgid "Workflow state can only be changed through the workflow engine"
+msgstr "لا يمكن تغيير حالة سير العمل إلا عبر محرك سير العمل"
+
+#: application_office/doctype/ao_application_case/ao_application_case.py
+msgid "{0} has no office role and cannot be assigned cases"
+msgstr "{0} لا يملك دورًا في المكتب ولا يمكن إسناد الملفات إليه"
+
+#: application_office/doctype/ao_application_case/ao_application_case.py
+msgid "{0} is system-managed and cannot be edited directly"
+msgstr "{0} تُدار بواسطة النظام ولا يمكن تعديلها مباشرة"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.json
+msgid "AO Audit Event"
+msgstr "حدث تدقيق (AO)"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.json
+msgid "Event Time"
+msgstr "وقت الحدث"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.json
+msgid "Ref Doctype"
+msgstr "نوع المستند المرجعي"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.json
+msgid "Ref Name"
+msgstr "اسم المستند المرجعي"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.py
+msgid "Audit events are append-only"
+msgstr "أحداث التدقيق للإضافة فقط"
+
+#: application_office/doctype/ao_audit_event/ao_audit_event.py
+msgid "Audit events cannot be deleted"
+msgstr "لا يمكن حذف أحداث التدقيق"
+
+#: application_office/doctype/ao_case_message/ao_case_message.json
+msgid "AO Case Message"
+msgstr "رسالة ملف (AO)"
+
+#: application_office/doctype/ao_case_message/ao_case_message.json
+msgid "Body"
+msgstr "النص"
+
+#: application_office/doctype/ao_case_message/ao_case_message.json
+msgid "Case"
+msgstr "الملف"
+
+#: application_office/doctype/ao_case_message/ao_case_message.json
+msgid "Staff"
+msgstr "الموظفون"
+
+#: application_office/doctype/ao_case_message/ao_case_message.py
+msgid "Customer messages are always customer-visible"
+msgstr "رسائل العميل تكون دائمًا ظاهرة للعميل"
+
+#: application_office/doctype/ao_case_message/ao_case_message.py
+msgid "Messages cannot be edited"
+msgstr "لا يمكن تعديل الرسائل"
+
+#: application_office/doctype/ao_case_state_log/ao_case_state_log.json
+msgid "AO Case State Log"
+msgstr "سجل حالة الملف (AO)"
+
+#: application_office/doctype/ao_case_state_log/ao_case_state_log.json
+msgid "Actor"
+msgstr "المنفّذ"
+
+#: application_office/doctype/ao_case_state_log/ao_case_state_log.json
+msgid "Changed At"
+msgstr "وقت التغيير"
+
+#: application_office/doctype/ao_case_state_log/ao_case_state_log.json
+msgid "From State"
+msgstr "من الحالة"
+
+#: application_office/doctype/ao_case_state_log/ao_case_state_log.json
+msgid "To State"
+msgstr "إلى الحالة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "AO Consent Record"
+msgstr "سجل موافقة (AO)"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Consent Type"
+msgstr "نوع الموافقة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Electronic Signature"
+msgstr "التوقيع الإلكتروني"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Granted"
+msgstr "تمت الموافقة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Policy Version"
+msgstr "إصدار السياسة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Privacy Notice"
+msgstr "إشعار الخصوصية"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Recorded At"
+msgstr "وقت التسجيل"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Sensitive Data Processing"
+msgstr "معالجة البيانات الحساسة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Terms of Service"
+msgstr "شروط الخدمة"
+
+#: application_office/doctype/ao_consent_record/ao_consent_record.json
+msgid "Withdrawn At"
+msgstr "وقت السحب"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "AO Data Request"
+msgstr "طلب بيانات (AO)"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Access / Export"
+msgstr "وصول / تصدير"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Account Closure"
+msgstr "إغلاق الحساب"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Completed At"
+msgstr "وقت الإكمال"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Correction"
+msgstr "تصحيح"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Decision Note"
+msgstr "ملاحظة القرار"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Erasure"
+msgstr "حذف"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid ""
+"If refused / partially fulfilled, state the legal or contractual retention "
+"reason"
+msgstr ""
+"في حال الرفض أو التنفيذ الجزئي، اذكر سبب الاحتفاظ القانوني أو التعاقدي"
+
+#: application_office/doctype/ao_data_request/ao_data_request.json
+msgid "Refused"
+msgstr "مرفوض"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "AO Document Review"
+msgstr "مراجعة مستند (AO)"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Decision"
+msgstr "القرار"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Findings"
+msgstr "النتائج"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Requested Corrections"
+msgstr "التصحيحات المطلوبة"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Required Document"
+msgstr "المستند المطلوب"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Review Completed"
+msgstr "اكتملت المراجعة"
+
+#: application_office/doctype/ao_document_review/ao_document_review.json
+msgid "Version Reviewed"
+msgstr "الإصدار الذي روجع"
+
+#: application_office/doctype/ao_document_review/ao_document_review.py
+msgid "Describe the corrections the customer must make"
+msgstr "صف التصحيحات التي يجب على العميل إجراؤها"
+
+#: application_office/doctype/ao_document_review/ao_document_review.py
+msgid "Reviews are immutable; add a new review instead"
+msgstr "المراجعات غير قابلة للتعديل؛ أضف مراجعة جديدة بدلًا من ذلك"
+
+#: application_office/doctype/ao_document_review/ao_document_review.py
+msgid "Reviews cannot be deleted"
+msgstr "لا يمكن حذف المراجعات"
+
+#: application_office/doctype/ao_document_review/ao_document_review.py
+msgid "There is no uploaded document to review"
+msgstr "لا يوجد مستند مرفوع للمراجعة"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "AO Document Version"
+msgstr "إصدار مستند (AO)"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "Original Filename"
+msgstr "اسم الملف الأصلي"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "Sha256"
+msgstr "SHA-256"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "Size Bytes"
+msgstr "الحجم بالبايت"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "Uploaded At"
+msgstr "وقت الرفع"
+
+#: application_office/doctype/ao_document_version/ao_document_version.json
+msgid "Uploaded By"
+msgstr "رُفع بواسطة"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "AO Form Approval"
+msgstr "موافقة نموذج (AO)"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Approval Mode"
+msgstr "نمط الموافقة"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Approval Timestamp"
+msgstr "وقت الموافقة"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Declined"
+msgstr "مرفوض"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "DocuSeal"
+msgstr "DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "DocuSeal Signature"
+msgstr "توقيع DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Docuseal Signing Url"
+msgstr "رابط التوقيع في DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Docuseal Submission Id"
+msgstr "معرّف تقديم DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Docuseal Submitter Id"
+msgstr "معرّف الموقّع في DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Docuseal Template Id"
+msgstr "معرّف قالب DocuSeal"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Form Template"
+msgstr "قالب النموذج"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "In-Portal Approval"
+msgstr "موافقة داخل البوابة"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Last Error"
+msgstr "آخر خطأ"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Private File containing the signed PDF"
+msgstr "ملف خاص يحتوي على نسخة PDF الموقّعة"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Signature Status"
+msgstr "حالة التوقيع"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Signed Document File"
+msgstr "ملف المستند الموقّع"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Submission Status"
+msgstr "حالة التقديم"
+
+#: application_office/doctype/ao_form_approval/ao_form_approval.json
+msgid "Viewed"
+msgstr "تم الاطلاع"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "AO Integration Event"
+msgstr "حدث تكامل (AO)"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Attempts"
+msgstr "المحاولات"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Idempotency key"
+msgstr "مفتاح عدم التكرار"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Ignored"
+msgstr "متجاهَل"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Non-sensitive identifiers needed to (re)process the event"
+msgstr "معرّفات غير حساسة لازمة لمعالجة الحدث (أو إعادة معالجته)"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Payload Digest"
+msgstr "بصمة الحمولة"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Processed"
+msgstr "تمت المعالجة"
+
+#: application_office/doctype/ao_integration_event/ao_integration_event.json
+msgid "Received At"
+msgstr "وقت الاستلام"
+
+#: application_office/doctype/ao_notification_log/ao_notification_log.json
+msgid "AO Notification Log"
+msgstr "سجل إشعار (AO)"
+
+#: application_office/doctype/ao_notification_log/ao_notification_log.json
+msgid "Dedupe Key"
+msgstr "مفتاح منع التكرار"
+
+#: application_office/doctype/ao_notification_log/ao_notification_log.json
+msgid "Event Key"
+msgstr "مفتاح الحدث"
+
+#: application_office/doctype/ao_notification_log/ao_notification_log.json
+msgid "Sent At"
+msgstr "وقت الإرسال"
+
+#: application_office/doctype/ao_notification_template/ao_notification_template.json
+msgid "AO Notification Template"
+msgstr "قالب إشعار (AO)"
+
+#: application_office/doctype/ao_notification_template/ao_notification_template.json
+msgid ""
+"Jinja. Variables: customer_name, case_reference, program_name, status_label,"
+" deadline, portal_url, message, office_name, disclaimer"
+msgstr ""
+"Jinja. المتغيرات: customer_name، case_reference، program_name، status_label،"
+" deadline، portal_url، message، office_name، disclaimer"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "AO Official Submission"
+msgstr "تقديم رسمي (AO)"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Allow the customer to download this receipt from the portal"
+msgstr "السماح للعميل بتنزيل هذا الإيصال من البوابة"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Confirmation Received"
+msgstr "تم استلام التأكيد"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Customer Can Download Evidence"
+msgstr "يمكن للعميل تنزيل الدليل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Customer Visible Update"
+msgstr "تحديث ظاهر للعميل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Evidence File"
+msgstr "ملف الدليل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Follow Up Date"
+msgstr "تاريخ المتابعة"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Follow-up Needed"
+msgstr "يحتاج متابعة"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Human Submission Attestation"
+msgstr "إقرار التقديم البشري"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid ""
+"I personally submitted this application through the official website. It was"
+" not submitted by a bot or script, and no CAPTCHA or access restriction was "
+"bypassed."
+msgstr ""
+"قدّمت هذا الطلب بنفسي عبر الموقع الرسمي. لم يُقدَّم بواسطة برنامج آلي أو "
+"سكربت، ولم يتم تجاوز أي اختبار CAPTCHA أو قيد وصول."
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Name / URL of the official website used"
+msgstr "اسم/عنوان الموقع الرسمي المستخدم"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Official Confirmation Number"
+msgstr "رقم التأكيد الرسمي"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Official Correspondence"
+msgstr "المراسلات الرسمية"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Official Portal"
+msgstr "البوابة الرسمية"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Official Update Received"
+msgstr "تم استلام تحديث رسمي"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Receipt / screenshot (stored as a private file)"
+msgstr "إيصال / لقطة شاشة (يُحفظ كملف خاص)"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Shown to the customer when staff enter an official status update"
+msgstr "يظهر للعميل عندما يُدخل الموظف تحديثًا رسميًا للحالة"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid ""
+"Staff summary of official correspondence. Do not paste passport numbers."
+msgstr "ملخص الموظف للمراسلات الرسمية. لا تلصق أرقام جوازات السفر."
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Submission Timestamp"
+msgstr "وقت التقديم"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.json
+msgid "Submitted By"
+msgstr "قُدّم بواسطة"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "A submission is already recorded for this case"
+msgstr "يوجد تقديم مسجّل لهذا الملف بالفعل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Evidence must be attached as a private file"
+msgstr "يجب إرفاق الدليل كملف خاص"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Official submissions can only be recorded by a human employee"
+msgstr "لا يمكن تسجيل التقديمات الرسمية إلا بواسطة موظف بشري"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Only an enabled employee account can record a submission"
+msgstr "لا يمكن تسجيل التقديم إلا من حساب موظف مفعّل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Only authorised case workers may record submissions"
+msgstr "لا يجوز تسجيل التقديمات إلا لمسؤولي الملفات المخوّلين"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Submission records cannot be deleted"
+msgstr "لا يمكن حذف سجلات التقديم"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "Submissions cannot be recorded through API tokens"
+msgstr "لا يمكن تسجيل التقديمات عبر رموز الواجهة البرمجية (API)"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "The case must be in READY_FOR_SUBMISSION (currently {0})"
+msgstr "يجب أن يكون الملف في حالة READY_FOR_SUBMISSION (حالته الآن: {0})"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "The official confirmation number is required"
+msgstr "رقم التأكيد الرسمي مطلوب"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "The submission time cannot be in the future"
+msgstr "لا يمكن أن يكون وقت التقديم في المستقبل"
+
+#: application_office/doctype/ao_official_submission/ao_official_submission.py
+msgid "You must attest that you personally submitted the application"
+msgstr "يجب أن تُقرّ بأنك قدّمت الطلب بنفسك"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "AO Program"
+msgstr "برنامج (AO)"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Closing Datetime"
+msgstr "تاريخ ووقت الإغلاق"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Customers can only start cases for published programs"
+msgstr "لا يمكن للعملاء فتح ملفات إلا للبرامج المنشورة"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid ""
+"Date staff last verified this program's official information. Never inferred"
+" automatically."
+msgstr ""
+"تاريخ آخر تحقق للفريق من المعلومات الرسمية للبرنامج. لا يُستنتج تلقائيًا "
+"أبدًا."
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Diversity Visa Lottery"
+msgstr "قرعة الهجرة المتنوعة"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Document Requirements"
+msgstr "متطلبات المستندات"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Educational / Exchange Program"
+msgstr "برنامج تعليمي / تبادل"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Eligibility Information"
+msgstr "معلومات الأهلية"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Fee Amount"
+msgstr "قيمة الرسوم"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Fee Note"
+msgstr "ملاحظة الرسوم"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Form Templates"
+msgstr "قوالب النماذج"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Forms & Signatures"
+msgstr "النماذج والتوقيعات"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "IANA name, e.g. Europe/Berlin. Dates above are in this zone."
+msgstr "اسم IANA، مثل Europe/Berlin. التواريخ أعلاه بحسب هذا النطاق الزمني."
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Intake Fields"
+msgstr "حقول المعلومات"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Intake Form"
+msgstr "نموذج المعلومات"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Last Verified On"
+msgstr "آخر تحقق في"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Master switch: the office is currently taking clients for this service"
+msgstr "مفتاح رئيسي: المكتب يستقبل العملاء حاليًا لهذه الخدمة"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Official Application Url"
+msgstr "رابط التقديم الرسمي"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Official Information (verified by staff)"
+msgstr "المعلومات الرسمية (بعد تحقق الفريق)"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Official Requirements Url"
+msgstr "رابط المتطلبات الرسمية"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Opening Datetime"
+msgstr "تاريخ ووقت الفتح"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Program Category"
+msgstr "فئة البرنامج"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Program Name"
+msgstr "اسم البرنامج"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Required Documents"
+msgstr "المستندات المطلوبة"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Responsible Employee"
+msgstr "الموظف المسؤول"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Scholarship"
+msgstr "منحة دراسية"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Service Available"
+msgstr "الخدمة متاحة"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Sponsoring Organization"
+msgstr "الجهة الراعية"
+
+#: application_office/doctype/ao_program/ao_program.json
+msgid "Verification Stale After Days"
+msgstr "عدد الأيام قبل اعتبار التحقق قديمًا"
+
+#: application_office/doctype/ao_program/ao_program.py
+msgid "A program cannot be published without a staff verification date"
+msgstr "لا يمكن نشر برنامج دون تاريخ تحقق من الفريق"
+
+#: application_office/doctype/ao_program/ao_program.py
+msgid "A signature-required form needs a DocuSeal template ID"
+msgstr "يحتاج النموذج المشترط توقيعه إلى معرّف قالب DocuSeal"
+
+#: application_office/doctype/ao_program/ao_program.py
+msgid "The closing date must be after the opening date"
+msgstr "يجب أن يكون تاريخ الإغلاق بعد تاريخ الفتح"
+
+#: application_office/doctype/ao_program/ao_program.py
+msgid "{0} is not a valid IANA time zone"
+msgstr "{0} ليس نطاقًا زمنيًا صالحًا (IANA)"
+
+#: application_office/doctype/ao_program_document_requirement/ao_program_document_requirement.json
+msgid "AO Program Document Requirement"
+msgstr "متطلب مستند للبرنامج (AO)"
+
+#: application_office/doctype/ao_program_form_template/ao_program_form_template.json
+msgid "AO Program Form Template"
+msgstr "نموذج استمارة البرنامج (AO)"
+
+#: application_office/doctype/ao_program_form_template/ao_program_form_template.json
+msgid "Form Name"
+msgstr "اسم النموذج"
+
+#: application_office/doctype/ao_program_form_template/ao_program_form_template.json
+msgid ""
+"If set the customer must complete the DocuSeal signing. Whether an "
+"e-signature is legally sufficient is determined by the office per document "
+"and jurisdiction."
+msgstr ""
+"عند التفعيل يجب على العميل إتمام التوقيع عبر DocuSeal. يحدد المكتب ما إذا "
+"كان التوقيع الإلكتروني كافيًا قانونيًا لكل مستند ولكل اختصاص قضائي."
+
+#: application_office/doctype/ao_program_form_template/ao_program_form_template.json
+msgid "Leave empty to use in-portal click approval"
+msgstr "اتركه فارغًا لاستخدام الموافقة بالنقر داخل البوابة"
+
+#: application_office/doctype/ao_program_form_template/ao_program_form_template.json
+msgid "Signature Required"
+msgstr "التوقيع مطلوب"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "AO Program Intake Field"
+msgstr "حقل معلومات البرنامج (AO)"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "Checkbox"
+msgstr "مربع اختيار"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid ""
+"Encrypted at rest and masked in staff views until explicitly revealed "
+"(audited)"
+msgstr ""
+"مشفّر عند التخزين ومُخفى في عروض الموظفين إلى أن يُكشف عمدًا (مع التدقيق)"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "Field Key"
+msgstr "مفتاح الحقل"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "Machine key, lowercase letters/digits/underscore"
+msgstr "مفتاح برمجي: أحرف لاتينية صغيرة وأرقام وشرطة سفلية"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "One option per line (Select only)"
+msgstr "خيار واحد في كل سطر (للقوائم المنسدلة فقط)"
+
+#: application_office/doctype/ao_program_intake_field/ao_program_intake_field.json
+msgid "Sensitive"
+msgstr "حساس"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "AO Referral"
+msgstr "إحالة (AO)"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Accepted by Professional"
+msgstr "قبلها المختص"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Communication History"
+msgstr "سجل التواصل"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Communications"
+msgstr "المراسلات"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Contacted"
+msgstr "تم التواصل"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Customer Notified"
+msgstr "تم إشعار العميل"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Jurisdiction"
+msgstr "الاختصاص القضائي"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Licence / Registration (verified by authorised staff only)"
+msgstr "الترخيص / التسجيل (يتحقق منه الموظفون المخوّلون فقط)"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Licence Details"
+msgstr "تفاصيل الترخيص"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Licence Verified"
+msgstr "تم التحقق من الترخيص"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Professional Or Organization"
+msgstr "المختص أو الجهة"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Proposed"
+msgstr "مقترحة"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Referral Status"
+msgstr "حالة الإحالة"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Regulator register / URL consulted"
+msgstr "سجل الجهة التنظيمية / الرابط الذي تمت مراجعته"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid ""
+"Tick only after you personally verified the licence with the regulator. A "
+"referral is NOT proof of licensure."
+msgstr ""
+"لا تحدد هذا الخيار إلا بعد أن تتحقق شخصيًا من الترخيص لدى الجهة التنظيمية. "
+"الإحالة ليست دليلًا على الترخيص."
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Verification Date"
+msgstr "تاريخ التحقق"
+
+#: application_office/doctype/ao_referral/ao_referral.json
+msgid "Verification Source"
+msgstr "مصدر التحقق"
+
+#: application_office/doctype/ao_referral/ao_referral.py
+msgid ""
+"Licence details and the register consulted are required to mark a licence "
+"verified"
+msgstr ""
+"تفاصيل الترخيص والسجل الذي تمت مراجعته مطلوبة لاعتماد التحقق من الترخيص"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "AO Referral Communication"
+msgstr "مراسلة إحالة (AO)"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "Communicated On"
+msgstr "تاريخ التواصل"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "Direction"
+msgstr "الاتجاه"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "From Professional"
+msgstr "من المختص"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "To Customer"
+msgstr "إلى العميل"
+
+#: application_office/doctype/ao_referral_communication/ao_referral_communication.json
+msgid "To Professional"
+msgstr "إلى المختص"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "AO Required Document"
+msgstr "مستند مطلوب (AO)"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Approved"
+msgstr "تمت الموافقة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "C1"
+msgstr "C1"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Correction Required"
+msgstr "يتطلب تصحيحًا"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Current Version"
+msgstr "الإصدار الحالي"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Document Category"
+msgstr "فئة المستند"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Educational Record"
+msgstr "سجل دراسي"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Financial"
+msgstr "مالي"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Form / Approval"
+msgstr "نموذج / موافقة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Identity Document"
+msgstr "وثيقة هوية"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "In Review"
+msgstr "قيد المراجعة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Internal reason"
+msgstr "سبب داخلي"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Not Uploaded"
+msgstr "لم يُرفع"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Rejection Reason"
+msgstr "سبب الرفض"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Required"
+msgstr "مطلوب"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Retention Category"
+msgstr "فئة الاحتفاظ"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Review Outcome"
+msgstr "نتيجة المراجعة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Review Status"
+msgstr "حالة المراجعة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Review Timestamp"
+msgstr "وقت المراجعة"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Reviewer"
+msgstr "المراجع"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Shown to the customer"
+msgstr "يظهر للعميل"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Submission Evidence"
+msgstr "دليل التقديم"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Upload Status"
+msgstr "حالة الرفع"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Uploaded"
+msgstr "تم الرفع"
+
+#: application_office/doctype/ao_required_document/ao_required_document.json
+msgid "Versions"
+msgstr "الإصدارات"
+
+#: application_office/doctype/ao_required_document/ao_required_document.py
+msgid "Document versions are immutable"
+msgstr "إصدارات المستندات غير قابلة للتعديل"
+
+#: application_office/doctype/ao_required_document/ao_required_document.py
+msgid "{0} is managed by the upload/review process"
+msgstr "{0} تُدار بواسطة عملية الرفع والمراجعة"
+
+#: application_office/doctype/ao_retention_rule/ao_retention_rule.json
+msgid "AO Retention Rule"
+msgstr "قاعدة احتفاظ (AO)"
+
+#: application_office/doctype/ao_retention_rule/ao_retention_rule.json
+msgid "Years"
+msgstr "سنوات"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "AO Settings"
+msgstr "إعدادات AfaqBridge (AO)"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Allowed Extensions"
+msgstr "الامتدادات المسموحة"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Backup Retention Note"
+msgstr "ملاحظة الاحتفاظ بالنسخ الاحتياطية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Clamav Socket"
+msgstr "مقبس ClamAV"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid ""
+"Comma separated user IDs that are integrations/bots. They may NEVER create "
+"Official Submission records."
+msgstr ""
+"معرّفات مستخدمين مفصولة بفواصل تمثل تكاملات/روبوتات. لا يجوز لها إنشاء سجلات"
+" تقديم رسمية أبدًا."
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid ""
+"Comma separated. Content is also sniffed; extension alone is never trusted."
+msgstr "مفصولة بفواصل. يُفحص المحتوى أيضًا، ولا يُعتمد على الامتداد وحده."
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid ""
+"Days before the deadline (program time zone) at which reminders are sent"
+msgstr ""
+"عدد الأيام قبل الموعد النهائي (بحسب النطاق الزمني للبرنامج) التي تُرسل فيها "
+"التذكيرات"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Default Retention Years"
+msgstr "سنوات الاحتفاظ الافتراضية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Disclaimer Text"
+msgstr "نص إخلاء المسؤولية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid ""
+"Document how long backups are kept. Deleted data may persist in backups "
+"until they expire."
+msgstr ""
+"وثّق مدة الاحتفاظ بالنسخ الاحتياطية. قد تبقى البيانات المحذوفة في النسخ "
+"الاحتياطية حتى تنتهي صلاحيتها."
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Docuseal Api Token"
+msgstr "رمز واجهة DocuSeal البرمجية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Docuseal Base Url"
+msgstr "عنوان DocuSeal الأساسي"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Docuseal Enabled"
+msgstr "تفعيل DocuSeal"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Docuseal Signer Role"
+msgstr "دور الموقّع في DocuSeal"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Docuseal Webhook Secret"
+msgstr "سر webhook الخاص بـ DocuSeal"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Invoice Reminder Days"
+msgstr "أيام تذكير الفواتير"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Legal Notices"
+msgstr "الإشعارات القانونية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Max Upload Mb"
+msgstr "الحد الأقصى لحجم الرفع (ميغابايت)"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Notifications & Reminders"
+msgstr "الإشعارات والتذكيرات"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Office Name"
+msgstr "اسم المكتب"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Optional path of a clamd UNIX socket; if set, uploads are scanned"
+msgstr "مسار اختياري لمقبس clamd (UNIX)؛ إن حُدّد فسيتم فحص الملفات المرفوعة"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Privacy Notice URL"
+msgstr "رابط إشعار الخصوصية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Privacy Version"
+msgstr "إصدار الخصوصية"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Remind about invoices unpaid this many days after due date"
+msgstr ""
+"التذكير بالفواتير غير المسددة بعد هذا العدد من الأيام من تاريخ الاستحقاق"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Reminder Days"
+msgstr "أيام التذكير"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Retention Rules"
+msgstr "قواعد الاحتفاظ"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Sensitive Data Consent Text"
+msgstr "نص الموافقة على معالجة البيانات الحساسة"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Service Accounts"
+msgstr "حسابات الخدمة"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Service Terms URL"
+msgstr "رابط شروط الخدمة"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid ""
+"Shown to customers at registration, on every service and in the portal "
+"footer. Must state the office does not guarantee "
+"acceptance/selection/immigration outcomes and gives no legal advice unless "
+"appropriately authorised. Have a lawyer review it for your jurisdictions."
+msgstr ""
+"يظهر للعملاء عند التسجيل وعلى كل خدمة وفي تذييل البوابة. يجب أن ينص على أن "
+"المكتب لا يضمن القبول أو الاختيار أو نتائج الهجرة ولا يقدم استشارة قانونية "
+"ما لم يكن مخوّلًا بذلك. اعرضه على محامٍ لمراجعته لكل اختصاص قضائي تعمل فيه."
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Signer role name used in your DocuSeal templates"
+msgstr "اسم دور الموقّع المستخدم في قوالب DocuSeal لديك"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Staff Workflow"
+msgstr "سير عمل الموظفين"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Terms Version"
+msgstr "إصدار الشروط"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "The whsec_... secret DocuSeal shows for the webhook"
+msgstr "السر الذي يبدأ بـ whsec_ ويعرضه DocuSeal للـ webhook"
+
+#: application_office/doctype/ao_settings/ao_settings.json
+msgid "Uploads"
+msgstr "الرفع"
+
+#: application_office/doctype/ao_settings/ao_settings.py
+msgid "Allowed extensions can only be a subset of: {0}"
+msgstr "الامتدادات المسموحة يجب أن تكون ضمن: {0}"
+
+#: application_office/doctype/ao_settings/ao_settings.py
+msgid "DocuSeal URL must use HTTPS (plain HTTP only for localhost)"
+msgstr ""
+"يجب أن يستخدم عنوان DocuSeal بروتوكول HTTPS (يُسمح بـ HTTP العادي لـ "
+"localhost فقط)"
+
+#: application_office/doctype/ao_settings/ao_settings.py
+msgid "Maximum upload size must be between 1 and 50 MB"
+msgstr "يجب أن يتراوح الحد الأقصى لحجم الرفع بين 1 و50 ميغابايت"
+
+#: application_office/doctype/ao_settings/ao_settings.py
+msgid "Reminder days must be a comma separated list of numbers"
+msgstr "يجب أن تكون أيام التذكير قائمة أرقام مفصولة بفواصل"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "AO Workflow Transition"
+msgstr "انتقال سير العمل (AO)"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "AWAITING_OFFICIAL_UPDATE"
+msgstr "بانتظار تحديث رسمي"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "CLOSED"
+msgstr "مغلق"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "COMPLETED"
+msgstr "مكتمل"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "CORRECTION_REQUIRED"
+msgstr "يتطلب تصحيحات"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid ""
+"Comma separated Role names. The token 'Customer' allows the case owner "
+"acting through the portal."
+msgstr ""
+"أسماء أدوار مفصولة بفواصل. الرمز «Customer» يسمح لصاحب الملف بالتنفيذ عبر "
+"البوابة."
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "NEW"
+msgstr "جديد"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "Notification Event"
+msgstr "حدث الإشعار"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid ""
+"Notification template key sent to the customer on this transition (optional)"
+msgstr "مفتاح قالب الإشعار الذي يُرسل للعميل عند هذا الانتقال (اختياري)"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "ON_HOLD"
+msgstr "معلّق"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "READY_FOR_CUSTOMER_APPROVAL"
+msgstr "جاهز لموافقة العميل"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "READY_FOR_SUBMISSION"
+msgstr "جاهز للتقديم"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "REJECTED_BY_OFFICIAL_AUTHORITY"
+msgstr "مرفوض من الجهة الرسمية"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "Requires Reason"
+msgstr "يتطلب سببًا"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "SUBMITTED"
+msgstr "تم التقديم"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "UNDER_REVIEW"
+msgstr "قيد المراجعة"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.json
+msgid "WAITING_FOR_DOCUMENTS"
+msgstr "بانتظار المستندات"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.py
+msgid "A transition must change state"
+msgstr "يجب أن يغيّر الانتقال الحالة"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.py
+msgid "CLOSED is terminal"
+msgstr "CLOSED حالة نهائية"
+
+#: application_office/doctype/ao_workflow_transition/ao_workflow_transition.py
+msgid "Unknown role {0}"
+msgstr "دور غير معروف {0}"
+
+#: common.py
+msgid "Please sign in with a customer account"
+msgstr "يرجى تسجيل الدخول بحساب عميل"
+
+#: common.py
+msgid "This account is closed"
+msgstr "هذا الحساب مغلق"
+
+#: common.py
+msgid "You are not permitted to perform this action"
+msgstr "لا تملك صلاحية تنفيذ هذا الإجراء"
+
+#: customers.py
+msgid "Please enter a valid name and e-mail address"
+msgstr "يرجى إدخال اسم وعنوان بريد إلكتروني صالحين"
+
+#: customers.py
+msgid "You must accept: {0}"
+msgstr "يجب أن توافق على: {0}"
+
+#: install.py
+msgid ""
+"I consent to the processing of my identity documents and other sensitive "
+"personal data solely for the purpose of preparing the application(s) I "
+"request."
+msgstr ""
+"أوافق على معالجة وثائق هويتي وبياناتي الشخصية الحساسة الأخرى لغرض إعداد "
+"الطلب (الطلبات) الذي أطلبه فقط."
+
+#: install.py
+msgid ""
+"This office provides administrative assistance with applications. We do not "
+"guarantee acceptance, selection, visa issuance or any immigration outcome, "
+"and we do not provide legal or immigration advice unless we are "
+"appropriately authorised to do so. Official decisions are made solely by the"
+" relevant authority or organisation. Applications are submitted on the "
+"official website by our staff, never by automated tools. [PLACEHOLDER: have "
+"this text reviewed by a qualified lawyer for every jurisdiction in which you"
+" operate.]"
+msgstr ""
+"يقدّم هذا المكتب مساعدة إدارية في الطلبات. نحن لا نضمن القبول أو الاختيار أو"
+" إصدار التأشيرة أو أي نتيجة تتعلق بالهجرة، ولا نقدّم استشارات قانونية أو "
+"استشارات هجرة ما لم نكن مخوّلين بذلك على النحو الواجب. القرارات الرسمية تصدر"
+" حصريًا عن الجهة أو المنظمة المعنية. يقدّم فريقنا الطلبات على الموقع الرسمي "
+"بنفسه، ولا تُقدَّم أبدًا بأدوات آلية. [نص مؤقت: يجب أن يراجع محامٍ مؤهل هذا "
+"النص لكل اختصاص قضائي تعمل فيه.]"
+
+#: intake.py
+msgid "Duplicate intake field key {0}"
+msgstr "مفتاح الحقل {0} مكرّر"
+
+#: intake.py
+msgid ""
+"Intake field key '{0}' must be lowercase letters, digits and underscores"
+msgstr ""
+"يجب أن يتكوّن مفتاح الحقل '{0}' من أحرف لاتينية صغيرة وأرقام وشرطات سفلية "
+"فقط"
+
+#: intake.py
+msgid "Invalid choice for {0}"
+msgstr "اختيار غير صالح للحقل {0}"
+
+#: intake.py
+msgid "Required information missing: {0}"
+msgstr "معلومات مطلوبة غير مكتملة: {0}"
+
+#: intake.py
+msgid "Unknown intake fields: {0}"
+msgstr "حقول معلومات غير معروفة: {0}"
+
+#: intake.py
+msgid "{0} is too long"
+msgstr "{0} طويل جدًا"
+
+#: intake.py
+msgid "{0} must be a valid date"
+msgstr "يجب أن يكون {0} تاريخًا صالحًا"
+
+#: integrations/docuseal.py
+msgid "DocuSeal integration is disabled"
+msgstr "تكامل DocuSeal معطّل"
+
+#: integrations/docuseal.py
+msgid "DocuSeal is not configured"
+msgstr "DocuSeal غير مهيّأ"
+
+#: integrations/docuseal.py
+msgid "The DocuSeal template ID is invalid"
+msgstr "معرّف قالب DocuSeal غير صالح"
+
+#: integrations/docuseal.py
+msgid ""
+"The signing service is temporarily unavailable. Please try again later."
+msgstr "خدمة التوقيع غير متاحة مؤقتًا. يرجى المحاولة لاحقًا."
+
+#: integrations/docuseal.py
+msgid "This form does not use DocuSeal"
+msgstr "هذا النموذج لا يستخدم DocuSeal"
+
+#: modules.txt
+msgid "Application Office"
+msgstr "AfaqBridge"
+
+#: portal_api.py
+msgid "Document not found"
+msgstr "المستند غير موجود"
+
+#: portal_api.py
+msgid "Documents can't be uploaded in the current status"
+msgstr "لا يمكن رفع المستندات في الحالة الحالية"
+
+#: portal_api.py
+msgid "Form not found"
+msgstr "النموذج غير موجود"
+
+#: portal_api.py
+msgid ""
+"If the address can be registered, a message with a link to set your password"
+" has been sent."
+msgstr ""
+"إذا كان بالإمكان تسجيل هذا العنوان، فقد أُرسلت رسالة تحتوي على رابط لتعيين "
+"كلمة المرور."
+
+#: portal_api.py
+msgid "Invalid form data"
+msgstr "بيانات النموذج غير صالحة"
+
+#: portal_api.py
+msgid "Message must be between 1 and {0} characters"
+msgstr "يجب أن يتراوح طول الرسالة بين 1 و{0} حرفًا"
+
+#: portal_api.py
+msgid "Missing required documents: {0}"
+msgstr "مستندات مطلوبة ناقصة: {0}"
+
+#: portal_api.py
+msgid "No file was provided"
+msgstr "لم يتم تقديم أي ملف"
+
+#: portal_api.py
+msgid "No receipt is available for download"
+msgstr "لا يوجد إيصال متاح للتنزيل"
+
+#: portal_api.py
+msgid ""
+"Please accept the current terms, privacy notice and sensitive-data consent "
+"first"
+msgstr ""
+"يرجى أولًا قبول الشروط الحالية وإشعار الخصوصية والموافقة على معالجة البيانات"
+" الحساسة"
+
+#: portal_api.py
+msgid "Please complete the information form first"
+msgstr "يرجى استكمال نموذج المعلومات أولًا"
+
+#: portal_api.py
+msgid "Please confirm that the information is correct and complete"
+msgstr "يرجى تأكيد أن المعلومات صحيحة ومكتملة"
+
+#: portal_api.py
+msgid "Please describe the changes you need"
+msgstr "يرجى وصف التعديلات التي تحتاجها"
+
+#: portal_api.py
+msgid "Please upload corrected versions of: {0}"
+msgstr "يرجى رفع نسخ مصحّحة من: {0}"
+
+#: portal_api.py
+msgid "Signing is not available yet"
+msgstr "التوقيع غير متاح بعد"
+
+#: portal_api.py
+msgid "This case can no longer be edited"
+msgstr "لم يعد بالإمكان تعديل هذا الملف"
+
+#: portal_api.py
+msgid "This case has already been submitted to our office for review"
+msgstr "تم إرسال هذا الملف إلى مكتبنا للمراجعة بالفعل"
+
+#: portal_api.py
+msgid "This case is not waiting for your approval"
+msgstr "هذا الملف لا ينتظر موافقتك"
+
+#: portal_api.py
+msgid ""
+"This document was already approved and cannot be replaced; contact the "
+"office"
+msgstr ""
+"تمت الموافقة على هذا المستند ولا يمكن استبداله؛ يرجى التواصل مع المكتب"
+
+#: portal_api.py
+msgid "This service is not available"
+msgstr "هذه الخدمة غير متاحة"
+
+#: portal_api.py
+msgid "Unknown request type"
+msgstr "نوع الطلب غير معروف"
+
+#: portal_api.py
+msgid "You have too many open cases; please contact the office"
+msgstr "لديك عدد كبير من الملفات المفتوحة؛ يرجى التواصل مع المكتب"
+
+#: portal_strings.py
+msgid "(optional)"
+msgstr "(اختياري)"
+
+#: portal_strings.py
+msgid "(required)"
+msgstr "(مطلوب)"
+
+#: portal_strings.py
+msgid "Approve"
+msgstr "موافقة"
+
+#: portal_strings.py
+msgid "Available services"
+msgstr "الخدمات المتاحة"
+
+#: portal_strings.py
+msgid ""
+"Check all information and documents above. Nothing is submitted until you "
+"approve; our staff then submit it on the official website."
+msgstr ""
+"راجع جميع المعلومات والمستندات أعلاه. لن يُقدَّم أي شيء قبل موافقتك؛ وبعدها "
+"يقدّمه فريقنا على الموقع الرسمي."
+
+#: portal_strings.py
+msgid "Choose a file"
+msgstr "اختر ملفًا"
+
+#: portal_strings.py
+msgid "Closing (as verified by our staff on {0}): {1}"
+msgstr "الإغلاق (كما تحقق منه فريقنا في {0}): {1}"
+
+#: portal_strings.py
+msgid "Could not load the portal: {0}"
+msgstr "تعذّر تحميل البوابة: {0}"
+
+#: portal_strings.py
+msgid "Create an account"
+msgstr "إنشاء حساب"
+
+#: portal_strings.py
+msgid "Deadline on record: {0}"
+msgstr "الموعد النهائي المسجّل: {0}"
+
+#: portal_strings.py
+msgid "Documents: {0}"
+msgstr "المستندات: {0}"
+
+#: portal_strings.py
+msgid "Download my file"
+msgstr "تنزيل ملفي"
+
+#: portal_strings.py
+msgid "Download receipt"
+msgstr "تنزيل الإيصال"
+
+#: portal_strings.py
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: portal_strings.py
+msgid "Feedback: {0}"
+msgstr "ملاحظات: {0}"
+
+#: portal_strings.py
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: portal_strings.py
+msgid "Hello, {0}"
+msgstr "مرحبًا، {0}"
+
+#: portal_strings.py
+msgid "I accept"
+msgstr "أوافق"
+
+#: portal_strings.py
+msgid "I accept the service terms"
+msgstr "أوافق على شروط الخدمة"
+
+#: portal_strings.py
+msgid "I confirm the information is correct and complete"
+msgstr "أؤكد أن المعلومات صحيحة ومكتملة"
+
+#: portal_strings.py
+msgid "I have read the privacy notice"
+msgstr "قرأت إشعار الخصوصية"
+
+#: portal_strings.py
+msgid "Information form"
+msgstr "نموذج المعلومات"
+
+#: portal_strings.py
+msgid "Invoices for this case"
+msgstr "فواتير هذا الملف"
+
+#: portal_strings.py
+msgid "No applications yet."
+msgstr "لا توجد طلبات بعد."
+
+#: portal_strings.py
+msgid "No invoices."
+msgstr "لا توجد فواتير."
+
+#: portal_strings.py
+msgid "Office:"
+msgstr "المكتب:"
+
+#: portal_strings.py
+msgid "Official requirements: {0}"
+msgstr "المتطلبات الرسمية: {0}"
+
+#: portal_strings.py
+msgid ""
+"Our staff are re-verifying the official information; please contact the "
+"office."
+msgstr "يعيد فريقنا التحقق من المعلومات الرسمية؛ يرجى التواصل مع المكتب."
+
+#: portal_strings.py
+msgid ""
+"Our staff recorded a submission on {0} via {1}. Confirmation reference: {2}."
+" This does not mean the application was accepted or selected."
+msgstr ""
+"سجّل فريقنا تقديمًا بتاريخ {0} عبر {1}. رقم التأكيد: {2}. هذا لا يعني أن "
+"الطلب قد قُبل أو تم اختياره."
+
+#: portal_strings.py
+msgid "Please review and accept"
+msgstr "يرجى المراجعة والموافقة"
+
+#: portal_strings.py
+msgid "Please review and approve"
+msgstr "يرجى المراجعة والموافقة"
+
+#: portal_strings.py
+msgid "Privacy"
+msgstr "الخصوصية"
+
+#: portal_strings.py
+msgid "Register"
+msgstr "تسجيل"
+
+#: portal_strings.py
+msgid "Request changes"
+msgstr "طلب تعديلات"
+
+#: portal_strings.py
+msgid "Request failed ({0})"
+msgstr "فشل الطلب ({0})"
+
+#: portal_strings.py
+msgid "Request recorded: {0}"
+msgstr "تم تسجيل الطلب: {0}"
+
+#: portal_strings.py
+msgid "Save and mark complete"
+msgstr "حفظ ووضع علامة «مكتمل»"
+
+#: portal_strings.py
+msgid "Send message"
+msgstr "إرسال الرسالة"
+
+#: portal_strings.py
+msgid "Send to our office for review"
+msgstr "إرسال إلى مكتبنا للمراجعة"
+
+#: portal_strings.py
+msgid "Sent to our office for review"
+msgstr "أُرسل إلى مكتبنا للمراجعة"
+
+#: portal_strings.py
+msgid "Service terms version {0}, privacy notice version {1}."
+msgstr "الإصدار {0} من شروط الخدمة، والإصدار {1} من إشعار الخصوصية."
+
+#: portal_strings.py
+msgid "Sign"
+msgstr "توقيع"
+
+#: portal_strings.py
+msgid "Sign in or register"
+msgstr "تسجيل الدخول أو إنشاء حساب"
+
+#: portal_strings.py
+msgid "Sign in to your account"
+msgstr "سجّل الدخول إلى حسابك"
+
+#: portal_strings.py
+msgid "Submission record"
+msgstr "سجل التقديم"
+
+#: portal_strings.py
+msgid "What needs to change?"
+msgstr "ما الذي يجب تعديله؟"
+
+#: portal_strings.py
+msgid ""
+"You approved this information. We are waiting for the signature above to be "
+"completed."
+msgstr "لقد وافقت على هذه المعلومات. بانتظار اكتمال التوقيع أعلاه."
+
+#: portal_strings.py
+msgid ""
+"You can request access to, correction of, or erasure of your data, or close "
+"your account. Some records must be kept by law."
+msgstr ""
+"يمكنك طلب الاطلاع على بياناتك أو تصحيحها أو حذفها، أو إغلاق حسابك. يجب "
+"الاحتفاظ ببعض السجلات بموجب القانون."
+
+#: portal_strings.py
+msgid "You:"
+msgstr "أنت:"
+
+#: portal_strings.py
+msgid "Your applications"
+msgstr "طلباتك"
+
+#: portal_strings.py
+msgid "missing"
+msgstr "مفقود"
+
+#: portal_strings.py
+msgid "optional"
+msgstr "اختياري"
+
+#: portal_strings.py
+msgid "uploaded (v{0}) — {1}"
+msgstr "تم الرفع (الإصدار {0}) — {1}"
+
+#: portal_strings.py
+msgid "← Back"
+msgstr "→ رجوع"
+
+#: public/js/application_case.js
+msgid "Add Message"
+msgstr "إضافة رسالة"
+
+#: public/js/application_case.js
+msgid "Add message"
+msgstr "إضافة رسالة"
+
+#: public/js/application_case.js
+msgid ""
+"Administrative service only. 'SUBMITTED' means staff recorded a submission, "
+"not that the customer was accepted."
+msgstr ""
+"خدمة إدارية فقط. تعني حالة «SUBMITTED» أن الفريق سجّل تقديمًا، لا أن العميل "
+"قد قُبل."
+
+#: public/js/application_case.js
+msgid "Communicate"
+msgstr "تواصل"
+
+#: public/js/application_case.js
+msgid "Create Invoice"
+msgstr "إنشاء فاتورة"
+
+#: public/js/application_case.js
+msgid "Draft invoice"
+msgstr "مسودة فاتورة"
+
+#: public/js/application_case.js
+msgid "Final Checklist"
+msgstr "القائمة النهائية"
+
+#: public/js/application_case.js
+msgid "Final review checklist"
+msgstr "قائمة المراجعة النهائية"
+
+#: public/js/application_case.js
+msgid "Finance"
+msgstr "المالية"
+
+#: public/js/application_case.js
+msgid "Intake"
+msgstr "بيانات الطلب"
+
+#: public/js/application_case.js
+msgid "Move to {0}"
+msgstr "نقل إلى {0}"
+
+#: public/js/application_case.js
+msgid ""
+"Reason (shown to the customer for correction/missing-document requests)"
+msgstr "السبب (يظهر للعميل عند طلب التصحيح أو المستندات الناقصة)"
+
+#: public/js/application_case.js
+msgid "Record Manual Official Submission"
+msgstr "تسجيل تقديم رسمي يدوي"
+
+#: public/js/application_case.js
+msgid "Reveal Sensitive Intake (audited)"
+msgstr "إظهار بيانات الطلب الحساسة (مع التدقيق)"
+
+#: public/js/application_case.js
+msgid "Service description"
+msgstr "وصف الخدمة"
+
+#: public/js/application_case.js
+msgid "Submission"
+msgstr "التقديم"
+
+#: public/js/language_switcher.js
+msgid "You have unsaved changes. Switch language anyway?"
+msgstr "لديك تغييرات غير محفوظة. هل تريد تبديل اللغة على أي حال؟"
+
+#: retention.py
+msgid ""
+"Case is not eligible for deletion. Only closed cases with an elapsed "
+"retention period (or a documented override reason) may be deleted"
+msgstr ""
+"الملف غير مؤهل للحذف. لا يجوز حذف إلا الملفات المغلقة التي انقضت مدة "
+"الاحتفاظ بها (أو بوجود سبب موثّق للاستثناء)"
+
+#: retention.py
+msgid "Case is under legal hold"
+msgstr "الملف خاضع لحجز قانوني"
+
+#: retention.py
+msgid "Retention period has not elapsed"
+msgstr "لم تنقضِ مدة الاحتفاظ بعد"
+
+#: staff_api.py
+msgid "At least one item is required"
+msgstr "مطلوب عنصر واحد على الأقل"
+
+#: staff_api.py
+msgid "Invalid message"
+msgstr "رسالة غير صالحة"
+
+#: staff_api.py
+msgid "You are not permitted to access this case"
+msgstr "لا تملك صلاحية الوصول إلى هذا الملف"
+
+#: uploads.py
+msgid "Internal error: file was not stored privately"
+msgstr "خطأ داخلي: لم يُحفظ الملف بشكل خاص"
+
+#: uploads.py
+msgid "PDF files containing scripts or embedded files are not accepted"
+msgstr "ملفات PDF التي تحتوي على نصوص برمجية أو ملفات مضمّنة غير مقبولة"
+
+#: uploads.py
+msgid "The PDF could not be read or is password-protected"
+msgstr "تعذّرت قراءة ملف PDF أو أنه محمي بكلمة مرور"
+
+#: uploads.py
+msgid "The file content does not match its extension"
+msgstr "محتوى الملف لا يطابق امتداده"
+
+#: uploads.py
+msgid "The file exceeds the {0} MB limit"
+msgstr "حجم الملف يتجاوز الحد المسموح ({0} ميغابايت)"
+
+#: uploads.py
+msgid "The file is empty"
+msgstr "الملف فارغ"
+
+#: uploads.py
+msgid "The file was rejected by the virus scanner"
+msgstr "رفض الفاحص الأمني الملف"
+
+#: uploads.py
+msgid "This file type is not accepted"
+msgstr "نوع هذا الملف غير مقبول"
+
+#: uploads.py
+msgid "Virus scanning failed; please try again later"
+msgstr "تعذّر فحص الملف بحثًا عن الفيروسات؛ يرجى المحاولة لاحقًا"
+
+#: uploads.py
+msgid "Virus scanning is unavailable; please try again later"
+msgstr "خدمة فحص الفيروسات غير متاحة؛ يرجى المحاولة لاحقًا"
+
+#: workflow.py
+msgid "A reason is required for this transition"
+msgstr "السبب مطلوب لهذا الانتقال"
+
+#: workflow.py
+msgid "A required signature is still outstanding"
+msgstr "لا يزال هناك توقيع مطلوب لم يكتمل"
+
+#: workflow.py
+msgid "Action needed: corrections required"
+msgstr "مطلوب إجراء: تصحيحات مطلوبة"
+
+#: workflow.py
+msgid "Administrative service completed"
+msgstr "اكتملت الخدمة الإدارية"
+
+#: workflow.py
+msgid "An Official Submission record entered by an employee is required"
+msgstr "يلزم سجل تقديم رسمي يدخله موظف"
+
+#: workflow.py
+msgid "Approved - being prepared for submission by our staff"
+msgstr "تمت الموافقة – قيد الإعداد للتقديم من قِبل فريقنا"
+
+#: workflow.py
+msgid ""
+"Case data changed after the customer approved it; request approval again"
+msgstr "تغيّرت بيانات الملف بعد موافقة العميل؛ اطلب الموافقة مرة أخرى"
+
+#: workflow.py
+msgid "Case not found"
+msgstr "الملف غير موجود"
+
+#: workflow.py
+msgid "Customer approval is required before submission"
+msgstr "موافقة العميل مطلوبة قبل التقديم"
+
+#: workflow.py
+msgid "Official authority did not accept the application"
+msgstr "لم تقبل الجهة الرسمية الطلب"
+
+#: workflow.py
+msgid "On hold"
+msgstr "معلّق"
+
+#: workflow.py
+msgid "Required documents not approved: {0}"
+msgstr "مستندات مطلوبة لم تتم الموافقة عليها: {0}"
+
+#: workflow.py
+msgid "Submitted - awaiting official update"
+msgstr "تم التقديم – بانتظار تحديث رسمي"
+
+#: workflow.py
+msgid "Submitted to the official website by our staff"
+msgstr "قدّم فريقنا الطلب على الموقع الرسمي"
+
+#: workflow.py
+msgid "The intake form has not been completed"
+msgstr "لم يُستكمل نموذج المعلومات"
+
+#: workflow.py
+msgid "Transition {0} → {1} is not allowed"
+msgstr "الانتقال من {0} إلى {1} غير مسموح"
+
+#: workflow.py
+msgid "Under review by our office"
+msgstr "قيد المراجعة لدى مكتبنا"
+
+#: workflow.py
+msgid "Waiting for your approval"
+msgstr "بانتظار موافقتك"
+
+#: workflow.py
+msgid "Waiting for your documents"
+msgstr "بانتظار مستنداتك"
+
+#: workflow.py
+msgid "You are not permitted to move a case from {0} to {1}"
+msgstr "لا تملك صلاحية نقل ملف من {0} إلى {1}"
+
+#: www/office-portal.html
+msgid "Loading…"
+msgstr "جارٍ التحميل…"
+
+#: www/office-portal.html
+msgid "This portal requires JavaScript."
+msgstr "تتطلب هذه البوابة تفعيل JavaScript."
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Welcome! Please sign in to continue."
+msgstr "مرحبًا! يرجى تسجيل الدخول للمتابعة."
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Forgot password?"
+msgstr "هل نسيت كلمة المرور؟"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Please enter your email, we'll send you password reset link"
+msgstr "يرجى إدخال بريدك الإلكتروني وسنرسل إليك رابط إعادة تعيين كلمة المرور"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Send Link"
+msgstr "إرسال الرابط"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Back to sign in"
+msgstr "العودة إلى تسجيل الدخول"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Use strong passwords."
+msgstr "استخدم كلمات مرور قوية."
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Begin typing for results."
+msgstr "ابدأ الكتابة لعرض النتائج."
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Last Edited By You"
+msgstr "آخر تعديل بواسطتك"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Last Edited By {0}"
+msgstr "آخر تعديل بواسطة {0}"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "{0} more not shown"
+msgstr "{0} أخرى غير معروضة"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "{0} results found"
+msgstr "تم العثور على {0} نتيجة"
+
+#. Gap-fill: missing or weak in Frappe v16.52.0 official ar.po
+msgid "Continue"
+msgstr "متابعة"

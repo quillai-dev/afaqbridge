@@ -1,0 +1,15 @@
+# DEV: plain HTTP, no certificate, any *.localhost name. Published only on 127.0.0.1 by compose.dev.yaml.
+include /etc/nginx/afaqbridge/common.inc;
+
+server { listen 80 default_server; server_name _; return 444; }          # unknown Host: close, never reach Frappe
+
+server {
+    listen 80;
+    server_name ${SITE_NAME};
+    include /etc/nginx/afaqbridge/frappe-locations.inc;
+}
+server {
+    listen 80;
+    server_name ${DOCUSEAL_HOST};
+    include /etc/nginx/afaqbridge/docuseal-locations.inc;
+}

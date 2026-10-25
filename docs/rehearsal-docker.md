@@ -7,7 +7,7 @@ and **real DocuSeal has never been run**. This is the exact procedure that close
 git clone <repo> application-office && cd application-office
 git clone https://github.com/frappe/frappe_docker upstream/frappe_docker && git -C upstream/frappe_docker checkout df2a3b72910634cf0e878b59eccf68a93736bf9d
 # push apps/application_office to a Git remote; put its URL in deploy/apps.json
-make setup                       # .env with random secrets; then edit SITE_NAME, SITES_RULE, DOCUSEAL_HOST, CUSTOM_IMAGE/TAG
+make setup                       # .env with random secrets; then edit SITE_NAME, SITE_URL, DOCUSEAL_HOST, DOCUSEAL_FORCE_SSL, CUSTOM_IMAGE/TAG
 printf '%s' "$(openssl rand -base64 32)" > /root/.ao-backup-pass && chmod 600 /root/.ao-backup-pass
 TEST_SITE=rehearsal.example.com scripts/rehearsal-docker.sh      # runs the checks below, writes rehearsal-evidence-<ts>.log
 ```

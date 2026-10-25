@@ -1,7 +1,20 @@
 app_name = "application_office"
-app_title = "Application Office"
-app_publisher = "Application Office"
-app_description = "Administrative application-processing workflow for an office"
+app_title = "AfaqBridge"
+app_publisher = "AfaqBridge"
+app_description = "AfaqBridge: international applications and administrative services platform (Arabic-first, English optional)"
+app_logo_url = "/assets/application_office/images/afaqbridge-icon.svg"
+
+# Branding + Arabic-first behaviour (see localization.py). The CSS only fixes direction-sensitive details Frappe
+# does not handle itself; the JS adds the AR/EN switch to the desk navbar.
+app_include_css = ["/assets/application_office/css/afaqbridge_desk.css"]
+app_include_js = ["/assets/application_office/js/language_switcher.js"]
+website_context = {
+    "favicon": "/assets/application_office/images/favicon.svg",
+    "splash_image": "/assets/application_office/images/afaqbridge-icon.svg",
+}
+before_request = ["application_office.localization.before_request"]
+after_request = ["application_office.localization.after_request"]
+doc_events = {"User": {"before_insert": "application_office.localization.user_before_insert"}}
 app_email = "admin@example.invalid"
 app_license = "mit"
 required_apps = ["erpnext"]

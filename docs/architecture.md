@@ -1,9 +1,11 @@
 # Architecture
 
+> Public entry point: ONE nginx `edge` (TLS, host routing, DocuSeal). Traefik was removed. Details: [deployment.md](deployment.md#0-web-entry-point-nginx-edge).
+
 ```
- Customer browser ──HTTPS──▶ Traefik ──▶ nginx(frontend) ──▶ gunicorn(backend: Frappe + ERPNext + application_office)
+ Customer browser ──HTTPS──▶ nginx(edge) ──▶ nginx(frontend) ──▶ gunicorn(backend: Frappe + ERPNext + application_office)
  Staff browser    ──HTTPS──▶    │                                   │            │
- DocuSeal signer  ──HTTPS──▶    └──▶ DocuSeal ──webhook (HMAC)──────┘            ├─ MariaDB   (internal network only)
+ DocuSeal signer  ──HTTPS──▶    └──▶ DocuSeal (own host name) ──webhook (HMAC)──────┘            ├─ MariaDB   (internal network only)
                                         │  └─ Postgres (internal only)           ├─ Redis cache / queue
                                         └◀── REST (X-Auth-Token) ────────────────┴─ workers (short/long) + scheduler
 ```
